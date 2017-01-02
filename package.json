@@ -1,0 +1,34 @@
+{
+  "name": "cloud.a",
+  "version": "1.0.0",
+  "description": "Official Website",
+  "main": "index.js",
+  "scripts": {
+    "production": "webpack -p",
+    "develop": "webpack -d",
+    "watch": "webpack -d --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "midwhite",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/midwhite/clouda-hp"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.21.0",
+    "babel-loader": "^6.2.10",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "css-loader": "^0.26.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "node-sass": "^4.1.1",
+    "sass-loader": "^4.1.1",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.14.0"
+  }
+}
