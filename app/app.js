@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+const Header = require('./views/header.js');
+
 export default class Application extends Component {
   constructor(){
     super();
@@ -8,8 +10,10 @@ export default class Application extends Component {
     }
   }
   render(){
-    return (
-      <h1>Cloud.A: Init Social Actions</h1>
+    return(
+      <div>
+        <Header />
+      </div>
     );
   }
 }

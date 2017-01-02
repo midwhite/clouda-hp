@@ -1,4 +1,80 @@
-h1 {
-  font-size: 30px; }
+@import url(http://fonts.googleapis.com/earlyaccess/notosansjapanese.css);#header {
+  position: fixed;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+  background: #2196F3;
+  color: #FFF;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3); }
+  #header h1 {
+    padding: 3px 10px;
+    font-size: 24px;
+    font-weight: bold; }
+    #header h1 span {
+      font-size: 12px;
+      font-weight: normal; }
+  #header .css-menu-item .css-menu-area {
+    padding: 5px 0px 10px;
+    border: 1px solid #1976D2; }
+    #header .css-menu-item .css-menu-area .css-menu-child {
+      padding: 5px 0px 10px;
+      border: 1px solid #1976D2;
+      background: #1E88E5;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); }
+
+@media screen and (max-width: 500px) {
+  #header .css-menu-icon {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 30px;
+    padding: 6px; }
+  #header .css-menu {
+    position: absolute;
+    top: 42px;
+    right: 0px;
+    width: 150px;
+    background: #2196F3;
+    box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.3); }
+    #header .css-menu .css-menu-item .description {
+      font-size: 10px; }
+    #header .css-menu .css-menu-item .css-menu-area {
+      text-align: center; }
+      #header .css-menu .css-menu-item .css-menu-area .css-menu-children {
+        margin-top: 10px; }
+        #header .css-menu .css-menu-item .css-menu-area .css-menu-children .css-menu-child {
+          margin: 0px 5px;
+          font-size: 14px; } }
+
+@media screen and (min-width: 501px) {
+  #header .css-menu-icon {
+    display: none; }
+  #header .css-menu-item {
+    position: relative;
+    width: 20%;
+    float: left;
+    text-align: center; }
+    #header .css-menu-item .description {
+      font-size: 12px; }
+    #header .css-menu-item:hover {
+      background: #64B5F6;
+      cursor: pointer; }
+    #header .css-menu-item .css-menu-children {
+      position: absolute;
+      width: 100%;
+      top: 59px;
+      left: 0px; }
+      #header .css-menu-item .css-menu-children .css-menu-child:hover {
+        background: #64B5F6; } }
+
+body {
+  font-family: 'Noto Sans Japanese', sans-serif;
+  font-size: 100%; }
+
+.clear {
+  clear: both; }
+
+.hide {
+  display: none; }
 
 /*# sourceMappingURL=bundle.css.map*/

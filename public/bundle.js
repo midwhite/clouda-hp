@@ -22038,6 +22038,8 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
+	var Header = __webpack_require__(/*! ./views/header.js */ 181);
+	
 	var Application = function (_Component) {
 	  _inherits(Application, _Component);
 	
@@ -22056,9 +22058,9 @@
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
-	        'h1',
+	        'div',
 	        null,
-	        'Cloud.A: Init Social Actions'
+	        _react2.default.createElement(Header, null)
 	      );
 	    }
 	  }]);
@@ -22076,6 +22078,328 @@
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 180 */,
+/* 181 */
+/*!*****************************!*\
+  !*** ./app/views/header.js ***!
+  \*****************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Header = function (_Component) {
+	  _inherits(Header, _Component);
+	
+	  function Header() {
+	    _classCallCheck(this, Header);
+	
+	    var _this = _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).call(this));
+	
+	    _this.state = {
+	      menu: window.screen.width > 500,
+	      menu_about: false,
+	      menu_history: false
+	    };
+	    return _this;
+	  }
+	
+	  _createClass(Header, [{
+	    key: "toggleMenu",
+	    value: function toggleMenu() {
+	      this.setState({
+	        menu: !this.state.menu
+	      });
+	    }
+	  }, {
+	    key: "toggleMenuAbout",
+	    value: function toggleMenuAbout() {
+	      this.setState({
+	        menu_about: !this.state.menu_about,
+	        menu_history: false
+	      });
+	    }
+	  }, {
+	    key: "toggleMenuHistory",
+	    value: function toggleMenuHistory() {
+	      this.setState({
+	        menu_about: false,
+	        menu_history: !this.state.menu_history
+	      });
+	    }
+	  }, {
+	    key: "render",
+	    value: function render() {
+	      var _this2 = this;
+	
+	      return _react2.default.createElement(
+	        "header",
+	        { id: "header" },
+	        _react2.default.createElement(
+	          "h1",
+	          null,
+	          "Cloud.A",
+	          _react2.default.createElement(
+	            "span",
+	            null,
+	            " - Init Social Actions with Intelligence -"
+	          )
+	        ),
+	        _react2.default.createElement("img", { src: "static/image/menu-btn.png", className: "css-menu-icon", onClick: this.toggleMenu.bind(this) }),
+	        function () {
+	          if (_this2.state.menu) {
+	            return _react2.default.createElement(
+	              "ul",
+	              { className: "css-menu" },
+	              _react2.default.createElement(
+	                "li",
+	                { className: "css-menu-item" },
+	                _react2.default.createElement(
+	                  "div",
+	                  { className: "css-menu-area" },
+	                  _react2.default.createElement(
+	                    "p",
+	                    { className: "title" },
+	                    "Home"
+	                  ),
+	                  _react2.default.createElement(
+	                    "p",
+	                    { className: "description" },
+	                    "\u30C8\u30C3\u30D7\u30DA\u30FC\u30B8"
+	                  )
+	                )
+	              ),
+	              _react2.default.createElement(
+	                "li",
+	                { className: "css-menu-item" },
+	                _react2.default.createElement(
+	                  "div",
+	                  { className: "css-menu-area", onClick: _this2.toggleMenuAbout.bind(_this2) },
+	                  _react2.default.createElement(
+	                    "p",
+	                    { className: "title" },
+	                    "About"
+	                  ),
+	                  _react2.default.createElement(
+	                    "p",
+	                    { className: "description" },
+	                    "\u6D3B\u52D5\u5185\u5BB9"
+	                  ),
+	                  function () {
+	                    // Aboutメニュー子要素の表示
+	                    if (_this2.state.menu_about) {
+	                      return _react2.default.createElement(
+	                        "ul",
+	                        { className: "css-menu-children" },
+	                        _react2.default.createElement(
+	                          "li",
+	                          { className: "css-menu-child" },
+	                          _react2.default.createElement(
+	                            "p",
+	                            { className: "title" },
+	                            "Vision"
+	                          ),
+	                          _react2.default.createElement(
+	                            "p",
+	                            { className: "description" },
+	                            "\u8A2D\u7ACB\u7406\u5FF5"
+	                          )
+	                        ),
+	                        _react2.default.createElement(
+	                          "li",
+	                          { className: "css-menu-child" },
+	                          _react2.default.createElement(
+	                            "p",
+	                            { className: "title" },
+	                            "Activity"
+	                          ),
+	                          _react2.default.createElement(
+	                            "p",
+	                            { className: "description" },
+	                            "\u6D3B\u52D5\u7D39\u4ECB"
+	                          )
+	                        ),
+	                        _react2.default.createElement(
+	                          "li",
+	                          { className: "css-menu-child" },
+	                          _react2.default.createElement(
+	                            "p",
+	                            { className: "title" },
+	                            "Discussion"
+	                          ),
+	                          _react2.default.createElement(
+	                            "p",
+	                            { className: "description" },
+	                            "\u30C7\u30A3\u30B9\u30AB\u30C3\u30B7\u30E7\u30F3"
+	                          )
+	                        ),
+	                        _react2.default.createElement(
+	                          "li",
+	                          { className: "css-menu-child" },
+	                          _react2.default.createElement(
+	                            "p",
+	                            { className: "title" },
+	                            "Actions"
+	                          ),
+	                          _react2.default.createElement(
+	                            "p",
+	                            { className: "description" },
+	                            "\u30D7\u30ED\u30B8\u30A7\u30AF\u30C8\u7D39\u4ECB"
+	                          )
+	                        ),
+	                        _react2.default.createElement(
+	                          "li",
+	                          { className: "css-menu-child" },
+	                          _react2.default.createElement(
+	                            "p",
+	                            { className: "title" },
+	                            "Community"
+	                          ),
+	                          _react2.default.createElement(
+	                            "p",
+	                            { className: "description" },
+	                            "\u304A\u697D\u3057\u307F\u4F01\u753B"
+	                          )
+	                        ),
+	                        _react2.default.createElement("div", { className: "clear" })
+	                      );
+	                    }
+	                  }()
+	                )
+	              ),
+	              _react2.default.createElement(
+	                "li",
+	                { className: "css-menu-item" },
+	                _react2.default.createElement(
+	                  "div",
+	                  { className: "css-menu-area", onClick: _this2.toggleMenuHistory.bind(_this2) },
+	                  _react2.default.createElement(
+	                    "p",
+	                    { className: "title" },
+	                    "History"
+	                  ),
+	                  _react2.default.createElement(
+	                    "p",
+	                    { className: "description" },
+	                    "\u6D3B\u52D5\u5B9F\u7E3E"
+	                  ),
+	                  function () {
+	                    // Historyメニュー子要素の表示
+	                    if (_this2.state.menu_history) {
+	                      return _react2.default.createElement(
+	                        "ul",
+	                        { className: "css-menu-children" },
+	                        _react2.default.createElement(
+	                          "li",
+	                          { className: "css-menu-child" },
+	                          _react2.default.createElement(
+	                            "p",
+	                            { className: "title" },
+	                            "Discussion"
+	                          ),
+	                          _react2.default.createElement(
+	                            "p",
+	                            { className: "description" },
+	                            "\u30C7\u30A3\u30B9\u30AB\u30C3\u30B7\u30E7\u30F3"
+	                          )
+	                        ),
+	                        _react2.default.createElement(
+	                          "li",
+	                          { className: "css-menu-child" },
+	                          _react2.default.createElement(
+	                            "p",
+	                            { className: "title" },
+	                            "Actions"
+	                          ),
+	                          _react2.default.createElement(
+	                            "p",
+	                            { className: "description" },
+	                            "\u30D7\u30ED\u30B8\u30A7\u30AF\u30C8\u7D39\u4ECB"
+	                          )
+	                        ),
+	                        _react2.default.createElement(
+	                          "li",
+	                          { className: "css-menu-child" },
+	                          _react2.default.createElement(
+	                            "p",
+	                            { className: "title" },
+	                            "Photo Gallary"
+	                          ),
+	                          _react2.default.createElement(
+	                            "p",
+	                            { className: "description" },
+	                            "\u6D3B\u52D5\u98A8\u666F"
+	                          )
+	                        ),
+	                        _react2.default.createElement("div", { className: "clear" })
+	                      );
+	                    }
+	                  }()
+	                )
+	              ),
+	              _react2.default.createElement(
+	                "li",
+	                { className: "css-menu-item" },
+	                _react2.default.createElement(
+	                  "div",
+	                  { className: "css-menu-area" },
+	                  _react2.default.createElement(
+	                    "p",
+	                    { className: "title" },
+	                    "Member"
+	                  ),
+	                  _react2.default.createElement(
+	                    "p",
+	                    { className: "description" },
+	                    "\u30E1\u30F3\u30D0\u30FC\u7D39\u4ECB"
+	                  )
+	                )
+	              ),
+	              _react2.default.createElement(
+	                "li",
+	                { className: "css-menu-item" },
+	                _react2.default.createElement(
+	                  "div",
+	                  { className: "css-menu-area" },
+	                  _react2.default.createElement(
+	                    "p",
+	                    { className: "title" },
+	                    "Recruit"
+	                  ),
+	                  _react2.default.createElement(
+	                    "p",
+	                    { className: "description" },
+	                    "\u4F1A\u54E1\u52DF\u96C6"
+	                  )
+	                )
+	              )
+	            );
+	          }
+	        }(),
+	        _react2.default.createElement("div", { className: "clear" })
+	      );
+	    }
+	  }]);
+	
+	  return Header;
+	}(_react.Component);
+	
+	module.exports = Header;
 
 /***/ }
 /******/ ]);

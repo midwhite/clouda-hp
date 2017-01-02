@@ -1,0 +1,95 @@
+#header {
+  position: fixed;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+  background: #2196F3;
+  color: #FFF;
+  box-shadow: 0px 2px 5px rgba(0,0,0,.3);
+  h1 {
+    padding: 3px 10px;
+    font-size: 24px;
+    font-weight: bold;
+    span {
+      font-size: 12px;
+      font-weight: normal;
+    }
+  }
+  .css-menu-item {
+    .css-menu-area {
+      padding: 5px 0px 10px;
+      border: 1px solid #1976D2;
+      .css-menu-child {
+        padding: 5px 0px 10px;
+        border: 1px solid #1976D2;
+        background: #1E88E5;
+        box-shadow: 2px 2px 5px rgba(0,0,0,.3);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px){
+  #header {
+    .css-menu-icon {
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      width: 30px;
+      padding: 6px;
+    }
+    .css-menu {
+      position: absolute;
+      top: 42px;
+      right: 0px;
+      width: 150px;
+      background: #2196F3;
+      box-shadow: -2px 2px 5px rgba(0,0,0,.3);
+      .css-menu-item {
+        .description {
+          font-size: 10px;
+        }
+        .css-menu-area {
+          text-align: center;
+          .css-menu-children {
+            margin-top: 10px;
+            .css-menu-child {
+              margin: 0px 5px;
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 501px){
+  #header {
+    .css-menu-icon {
+      display: none;
+    }
+    .css-menu-item {
+      position: relative;
+      width: 20%;
+      float: left;
+      text-align: center;
+      .description {
+        font-size: 12px;
+      }
+      &:hover {
+        background: #64B5F6;
+        cursor: pointer;
+      }
+      .css-menu-children {
+        position: absolute;
+        width: 100%;
+        top: 59px;
+        left: 0px;
+        .css-menu-child:hover {
+          background: #64B5F6;
+        }
+      }
+    }
+  }
+}
