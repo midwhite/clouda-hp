@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 
 const Header = require('./views/header.js');
+const TopPage = require('./views/top_page.js');
 
 export default class Application extends Component {
   constructor(){
@@ -13,6 +14,9 @@ export default class Application extends Component {
     return(
       <div>
         <Header />
+        <div id="contentWrapper">
+          <TopPage />
+        </div>
       </div>
     );
   }

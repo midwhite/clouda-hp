@@ -29,7 +29,7 @@ class Header extends Component {
   render(){
     return(
       <header id="header">
-        <h1>Cloud.A<span> - Init Social Actions with Intelligence -</span></h1>
+        <h1>Cloud.A<span> - Init Social Actions -</span></h1>
         <img src="static/image/menu-btn.png" className="css-menu-icon" onClick={this.toggleMenu.bind(this)} />
         {(()=>{
           if(this.state.menu){
@@ -56,15 +56,15 @@ class Header extends Component {
                             </li>
                             <li className="css-menu-child">
                               <p className="title">Activity</p>
-                              <p className="description">活動紹介</p>
+                              <p className="description">活動概要</p>
                             </li>
                             <li className="css-menu-child">
-                              <p className="title">Discussion</p>
-                              <p className="description">ディスカッション</p>
+                              <p className="title">Workshop</p>
+                              <p className="description">勉強会</p>
                             </li>
                             <li className="css-menu-child">
                               <p className="title">Actions</p>
-                              <p className="description">プロジェクト紹介</p>
+                              <p className="description">プロジェクト活動</p>
                             </li>
                             <li className="css-menu-child">
                               <p className="title">Community</p>

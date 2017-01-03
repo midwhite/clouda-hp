@@ -61,7 +61,7 @@
 	
 	var _app2 = _interopRequireDefault(_app);
 	
-	__webpack_require__(/*! ./app/main.scss */ 179);
+	__webpack_require__(/*! ./app/main.scss */ 182);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -22038,7 +22038,8 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var Header = __webpack_require__(/*! ./views/header.js */ 181);
+	var Header = __webpack_require__(/*! ./views/header.js */ 179);
+	var TopPage = __webpack_require__(/*! ./views/top_page.js */ 180);
 	
 	var Application = function (_Component) {
 	  _inherits(Application, _Component);
@@ -22060,7 +22061,12 @@
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement(Header, null)
+	        _react2.default.createElement(Header, null),
+	        _react2.default.createElement(
+	          'div',
+	          { id: 'contentWrapper' },
+	          _react2.default.createElement(TopPage, null)
+	        )
 	      );
 	    }
 	  }]);
@@ -22072,16 +22078,6 @@
 
 /***/ },
 /* 179 */
-/*!***********************!*\
-  !*** ./app/main.scss ***!
-  \***********************/
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 180 */,
-/* 181 */
 /*!*****************************!*\
   !*** ./app/views/header.js ***!
   \*****************************/
@@ -22157,7 +22153,7 @@
 	          _react2.default.createElement(
 	            "span",
 	            null,
-	            " - Init Social Actions with Intelligence -"
+	            " - Init Social Actions -"
 	          )
 	        ),
 	        _react2.default.createElement("img", { src: "static/image/menu-btn.png", className: "css-menu-icon", onClick: this.toggleMenu.bind(this) }),
@@ -22231,7 +22227,7 @@
 	                          _react2.default.createElement(
 	                            "p",
 	                            { className: "description" },
-	                            "\u6D3B\u52D5\u7D39\u4ECB"
+	                            "\u6D3B\u52D5\u6982\u8981"
 	                          )
 	                        ),
 	                        _react2.default.createElement(
@@ -22240,12 +22236,12 @@
 	                          _react2.default.createElement(
 	                            "p",
 	                            { className: "title" },
-	                            "Discussion"
+	                            "Workshop"
 	                          ),
 	                          _react2.default.createElement(
 	                            "p",
 	                            { className: "description" },
-	                            "\u30C7\u30A3\u30B9\u30AB\u30C3\u30B7\u30E7\u30F3"
+	                            "\u52C9\u5F37\u4F1A"
 	                          )
 	                        ),
 	                        _react2.default.createElement(
@@ -22259,7 +22255,7 @@
 	                          _react2.default.createElement(
 	                            "p",
 	                            { className: "description" },
-	                            "\u30D7\u30ED\u30B8\u30A7\u30AF\u30C8\u7D39\u4ECB"
+	                            "\u30D7\u30ED\u30B8\u30A7\u30AF\u30C8\u6D3B\u52D5"
 	                          )
 	                        ),
 	                        _react2.default.createElement(
@@ -22400,6 +22396,83 @@
 	}(_react.Component);
 	
 	module.exports = Header;
+
+/***/ },
+/* 180 */
+/*!*******************************!*\
+  !*** ./app/views/top_page.js ***!
+  \*******************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Tool = __webpack_require__(/*! ./tool.js */ 181);
+	
+	var TopPage = function (_Component) {
+	  _inherits(TopPage, _Component);
+	
+	  function TopPage() {
+	    _classCallCheck(this, TopPage);
+	
+	    return _possibleConstructorReturn(this, (TopPage.__proto__ || Object.getPrototypeOf(TopPage)).apply(this, arguments));
+	  }
+	
+	  _createClass(TopPage, [{
+	    key: 'render',
+	    value: function render() {
+	      var firstviewClassname = 'firstview firstview_' + (Tool.rand(2) + 1);
+	      return _react2.default.createElement(
+	        'div',
+	        { id: 'home' },
+	        _react2.default.createElement('div', { className: firstviewClassname })
+	      );
+	    }
+	  }]);
+	
+	  return TopPage;
+	}(_react.Component);
+	
+	module.exports = TopPage;
+
+/***/ },
+/* 181 */
+/*!***************************!*\
+  !*** ./app/views/tool.js ***!
+  \***************************/
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	var Tool = {
+	  rand: function rand(num) {
+	    return Math.floor(Math.random() * num);
+	  }
+	};
+	
+	module.exports = Tool;
+
+/***/ },
+/* 182 */
+/*!***********************!*\
+  !*** ./app/main.scss ***!
+  \***********************/
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
 
 /***/ }
 /******/ ]);
