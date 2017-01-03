@@ -1,23 +1,18 @@
 import React, {Component} from 'react';
+import { Router, Route, Link, browserHistory } from 'react-router';
 
-const Header = require('./views/header.js');
-const TopPage = require('./views/top_page.js');
+const Home   = require('./views/home.js');
+const Vision = require('./views/vision.js');
 
 export default class Application extends Component {
-  constructor(){
-    super();
-    this.state = {
-      count: 0
-    }
-  }
   render(){
     return(
-      <div>
-        <Header />
-        <div id="contentWrapper">
-          <TopPage />
-        </div>
-      </div>
+      <section id="application">
+        <Router history={browserHistory}>
+          <Route path="/" component={Home} />
+          <Route path="vision" component={Vision} />
+        </Router>
+      </section>
     );
   }
 }

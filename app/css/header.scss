@@ -17,10 +17,14 @@
   }
   .css-menu-item {
     .css-menu-area {
-      padding: 5px 0px 10px;
       border: 1px solid #1976D2;
-      .css-menu-child {
+      a {
         padding: 5px 0px 10px;
+        color: #FFF;
+        text-decoration: none;
+        display: block;
+      }
+      .css-menu-child {
         border: 1px solid #1976D2;
         background: #1E88E5;
         box-shadow: 2px 2px 5px rgba(0,0,0,.3);
@@ -46,7 +50,7 @@
       background: #2196F3;
       box-shadow: -2px 2px 5px rgba(0,0,0,.3);
       .css-menu-item {
-        .description {
+        .css-description {
           font-size: 10px;
         }
         .css-menu-area {
@@ -74,7 +78,7 @@
       width: 20%;
       float: left;
       text-align: center;
-      .description {
+      .css-description {
         font-size: 12px;
       }
       &:hover {

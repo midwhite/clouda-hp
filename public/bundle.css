@@ -14,10 +14,13 @@
       font-size: 12px;
       font-weight: normal; }
   #header .css-menu-item .css-menu-area {
-    padding: 5px 0px 10px;
     border: 1px solid #1976D2; }
-    #header .css-menu-item .css-menu-area .css-menu-child {
+    #header .css-menu-item .css-menu-area a {
       padding: 5px 0px 10px;
+      color: #FFF;
+      text-decoration: none;
+      display: block; }
+    #header .css-menu-item .css-menu-area .css-menu-child {
       border: 1px solid #1976D2;
       background: #1E88E5;
       box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); }
@@ -36,7 +39,7 @@
     width: 150px;
     background: #2196F3;
     box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.3); }
-    #header .css-menu .css-menu-item .description {
+    #header .css-menu .css-menu-item .css-description {
       font-size: 10px; }
     #header .css-menu .css-menu-item .css-menu-area {
       text-align: center; }
@@ -54,7 +57,7 @@
     width: 20%;
     float: left;
     text-align: center; }
-    #header .css-menu-item .description {
+    #header .css-menu-item .css-description {
       font-size: 12px; }
     #header .css-menu-item:hover {
       background: #64B5F6;
@@ -66,19 +69,6 @@
       left: 0px; }
       #header .css-menu-item .css-menu-children .css-menu-child:hover {
         background: #64B5F6; } }
-
-body {
-  font-family: 'Noto Sans Japanese', sans-serif;
-  font-size: 100%; }
-
-#contentWrapper {
-  margin-top: 42px; }
-
-.clear {
-  clear: both; }
-
-.hide {
-  display: none; }
 
 #home .firstview {
   height: 300px;
@@ -97,5 +87,22 @@ body {
 @media screen and (min-width: 1001px) {
   #home .firstview {
     height: 800px; } }
+
+body {
+  font-family: 'Noto Sans Japanese', sans-serif;
+  font-size: 100%; }
+
+.contentWrapper {
+  margin-top: 42px; }
+
+@media screen and (min-width: 501px) {
+  .contentWrapper {
+    margin-top: 101px; } }
+
+.clear {
+  clear: both; }
+
+.hide {
+  display: none; }
 
 /*# sourceMappingURL=bundle.css.map*/
