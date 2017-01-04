@@ -22050,6 +22050,7 @@
 	var Photos = __webpack_require__(/*! ./views/photos.js */ 244);
 	var Members = __webpack_require__(/*! ./views/members.js */ 245);
 	var Recruit = __webpack_require__(/*! ./views/recruit.js */ 246);
+	var NoMatch = __webpack_require__(/*! ./views/not_found.js */ 248);
 	
 	var Application = function (_Component) {
 	  _inherits(Application, _Component);
@@ -22078,7 +22079,8 @@
 	          _react2.default.createElement(_reactRouter.Route, { path: 'history/projects', component: Projects }),
 	          _react2.default.createElement(_reactRouter.Route, { path: 'history/photos', component: Photos }),
 	          _react2.default.createElement(_reactRouter.Route, { path: 'members', component: Members }),
-	          _react2.default.createElement(_reactRouter.Route, { path: 'recruit', component: Recruit })
+	          _react2.default.createElement(_reactRouter.Route, { path: 'recruit', component: Recruit }),
+	          _react2.default.createElement(_reactRouter.Route, { path: '*', component: NoMatch })
 	        )
 	      );
 	    }
@@ -28920,6 +28922,78 @@
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 248 */
+/*!********************************!*\
+  !*** ./app/views/not_found.js ***!
+  \********************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRouter = __webpack_require__(/*! react-router */ 179);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Header = __webpack_require__(/*! ./header.js */ 235);
+	var Tool = __webpack_require__(/*! ./tool.js */ 236);
+	
+	var Theme = function (_Component) {
+	  _inherits(Theme, _Component);
+	
+	  function Theme() {
+	    _classCallCheck(this, Theme);
+	
+	    return _possibleConstructorReturn(this, (Theme.__proto__ || Object.getPrototypeOf(Theme)).apply(this, arguments));
+	  }
+	
+	  _createClass(Theme, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { id: '404NotFound' },
+	        _react2.default.createElement(Header, null),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'css-404-error contentWrapper' },
+	          _react2.default.createElement(
+	            'h1',
+	            null,
+	            '404 Not Found'
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            '\u304A\u63A2\u3057\u306E\u30DA\u30FC\u30B8\u306F\u898B\u3064\u304B\u308A\u307E\u305B\u3093\u3067\u3057\u305F\u3002'
+	          ),
+	          _react2.default.createElement(
+	            _reactRouter.Link,
+	            { to: '/' },
+	            'TOP\u306B\u623B\u308B'
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return Theme;
+	}(_react.Component);
+	
+	module.exports = Theme;
 
 /***/ }
 /******/ ]);

@@ -11,6 +11,7 @@ const Projects = require('./views/projects.js');
 const Photos   = require('./views/photos.js');
 const Members  = require('./views/members.js');
 const Recruit  = require('./views/recruit.js');
+const NoMatch  = require('./views/not_found.js');
 
 export default class Application extends Component {
   render(){
@@ -27,6 +28,7 @@ export default class Application extends Component {
           <Route path="history/photos"   component={Photos} />
           <Route path="members"          component={Members} />
           <Route path="recruit"          component={Recruit} />
+          <Route path="*"                component={NoMatch}/>
         </Router>
       </section>
     );
