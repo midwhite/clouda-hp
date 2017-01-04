@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 const Header = require('./header.js');
 const Tool = require('./tool.js');
 
-class Vision extends Component {
+class Members extends Component {
   render(){
     return(
       <div>
@@ -10,7 +10,7 @@ class Vision extends Component {
         <section id="vision" className="contentWrapper">
           <div className="css-wrapper css-bg-vision-1">
             <div className="css-content">
-              <h2>設立理念</h2>
+              <h2>メンバー紹介</h2>
               <p className="css-title">ビジョン。ビジョン。ビジョン。</p>
               <div className="css-description">
                 <p>説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。</p>
@@ -20,7 +20,7 @@ class Vision extends Component {
 
           <div className="css-wrapper css-bg-vision-2">
             <div className="css-content">
-              <h2>設立理念</h2>
+              <h2>メンバー紹介</h2>
               <p className="css-title">ビジョン。ビジョン。ビジョン。</p>
               <div className="css-description">
                 <p>説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。</p>
@@ -30,7 +30,7 @@ class Vision extends Component {
 
           <div className="css-wrapper css-bg-vision-3">
             <div className="css-content">
-              <h2>設立理念</h2>
+              <h2>メンバー紹介</h2>
               <p className="css-title">ビジョン。ビジョン。ビジョン。</p>
               <div className="css-description">
                 <p>説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。</p>
@@ -43,4 +43,4 @@ class Vision extends Component {
   }
 }
 
-module.exports = Vision;
+module.exports = Members;
