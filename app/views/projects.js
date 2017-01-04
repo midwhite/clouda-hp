@@ -7,7 +7,7 @@ class Projects extends Component {
     return(
       <div>
         <Header />
-        <section id="vision" className="contentWrapper">
+        <section id="projects" className="contentWrapper layout-1">
           <div className="css-wrapper css-bg-vision-1">
             <div className="css-content">
               <h2>プロジェクト紹介</h2>

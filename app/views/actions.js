@@ -7,7 +7,7 @@ class Actions extends Component {
     return(
       <div>
         <Header />
-        <section id="vision" className="contentWrapper">
+        <section id="actions" className="contentWrapper layout-1">
           <div className="css-wrapper css-bg-vision-1">
             <div className="css-content">
               <h2>プロジェクト活動</h2>

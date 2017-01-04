@@ -7,7 +7,7 @@ class Workshop extends Component {
     return(
       <div>
         <Header />
-        <section id="vision" className="contentWrapper">
+        <section id="workshop" className="contentWrapper layout-1">
           <div className="css-wrapper css-bg-vision-1">
             <div className="css-content">
               <h2>勉強会</h2>

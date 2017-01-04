@@ -7,7 +7,7 @@ class Recruit extends Component {
     return(
       <div>
         <Header />
-        <section id="vision" className="contentWrapper">
+        <section id="recruit" className="contentWrapper layout-1">
           <div className="css-wrapper css-bg-vision-1">
             <div className="css-content">
               <h2>会員募集</h2>

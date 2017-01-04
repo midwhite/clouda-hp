@@ -61,7 +61,7 @@
 	
 	var _app2 = _interopRequireDefault(_app);
 	
-	__webpack_require__(/*! ./app/main.scss */ 238);
+	__webpack_require__(/*! ./app/app.scss */ 247);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -27731,7 +27731,7 @@
 	        _react2.default.createElement(Header, null),
 	        _react2.default.createElement(
 	          'section',
-	          { id: 'vision', className: 'contentWrapper' },
+	          { id: 'vision', className: 'contentWrapper layout-1' },
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'css-wrapper css-bg-vision-1' },
@@ -27824,15 +27824,7 @@
 	module.exports = Vision;
 
 /***/ },
-/* 238 */
-/*!***********************!*\
-  !*** ./app/main.scss ***!
-  \***********************/
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
+/* 238 */,
 /* 239 */
 /*!*******************************!*\
   !*** ./app/views/activity.js ***!
@@ -27876,7 +27868,7 @@
 	        _react2.default.createElement(Header, null),
 	        _react2.default.createElement(
 	          'section',
-	          { id: 'vision', className: 'contentWrapper' },
+	          { id: 'activity', className: 'contentWrapper layout-1' },
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'css-wrapper css-bg-vision-1' },
@@ -28012,7 +28004,7 @@
 	        _react2.default.createElement(Header, null),
 	        _react2.default.createElement(
 	          'section',
-	          { id: 'vision', className: 'contentWrapper' },
+	          { id: 'workshop', className: 'contentWrapper layout-1' },
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'css-wrapper css-bg-vision-1' },
@@ -28148,7 +28140,7 @@
 	        _react2.default.createElement(Header, null),
 	        _react2.default.createElement(
 	          'section',
-	          { id: 'vision', className: 'contentWrapper' },
+	          { id: 'actions', className: 'contentWrapper layout-1' },
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'css-wrapper css-bg-vision-1' },
@@ -28284,7 +28276,7 @@
 	        _react2.default.createElement(Header, null),
 	        _react2.default.createElement(
 	          'section',
-	          { id: 'vision', className: 'contentWrapper' },
+	          { id: 'theme', className: 'contentWrapper layout-1' },
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'css-wrapper css-bg-vision-1' },
@@ -28420,7 +28412,7 @@
 	        _react2.default.createElement(Header, null),
 	        _react2.default.createElement(
 	          'section',
-	          { id: 'vision', className: 'contentWrapper' },
+	          { id: 'projects', className: 'contentWrapper layout-1' },
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'css-wrapper css-bg-vision-1' },
@@ -28556,7 +28548,7 @@
 	        _react2.default.createElement(Header, null),
 	        _react2.default.createElement(
 	          'section',
-	          { id: 'vision', className: 'contentWrapper' },
+	          { id: 'photos', className: 'contentWrapper layout-1' },
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'css-wrapper css-bg-vision-1' },
@@ -28692,7 +28684,7 @@
 	        _react2.default.createElement(Header, null),
 	        _react2.default.createElement(
 	          'section',
-	          { id: 'vision', className: 'contentWrapper' },
+	          { id: 'members', className: 'contentWrapper layout-1' },
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'css-wrapper css-bg-vision-1' },
@@ -28828,7 +28820,7 @@
 	        _react2.default.createElement(Header, null),
 	        _react2.default.createElement(
 	          'section',
-	          { id: 'vision', className: 'contentWrapper' },
+	          { id: 'recruit', className: 'contentWrapper layout-1' },
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'css-wrapper css-bg-vision-1' },
@@ -28919,6 +28911,15 @@
 	}(_react.Component);
 	
 	module.exports = Recruit;
+
+/***/ },
+/* 247 */
+/*!**********************!*\
+  !*** ./app/app.scss ***!
+  \**********************/
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
 
 /***/ }
 /******/ ]);

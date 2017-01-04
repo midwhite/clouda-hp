@@ -7,7 +7,7 @@ class Theme extends Component {
     return(
       <div>
         <Header />
-        <section id="vision" className="contentWrapper">
+        <section id="theme" className="contentWrapper layout-1">
           <div className="css-wrapper css-bg-vision-1">
             <div className="css-content">
               <h2>勉強会テーマ</h2>

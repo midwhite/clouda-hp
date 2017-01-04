@@ -1,7 +1,7 @@
 @import url(http://fonts.googleapis.com/earlyaccess/notosansjapanese.css);
 @import './css/header.scss';
 @import './css/home.scss';
-@import './css/vision.scss';
+@import './css/layout_1.scss';
 
 body {
   font-family: 'Noto Sans Japanese', sans-serif;
@@ -20,7 +20,4 @@ body {
 
 .clear {
   clear: both;
-}
-.hide {
-  display: none;
 }

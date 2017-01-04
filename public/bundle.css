@@ -99,27 +99,27 @@
   #home .firstview {
     height: 800px; } }
 
-#vision .css-bg-vision-1 {
+.layout-1 .css-bg-vision-1 {
   background-image: url("/image/bg/vision_1.png"); }
 
-#vision .css-bg-vision-2 {
+.layout-1 .css-bg-vision-2 {
   background-image: url("/image/bg/vision_2.png"); }
 
-#vision .css-bg-vision-3 {
+.layout-1 .css-bg-vision-3 {
   background-image: url("/image/bg/vision_3.png"); }
 
-#vision .css-wrapper {
+.layout-1 .css-wrapper {
   padding: 10px;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat; }
-  #vision .css-wrapper .css-content {
+  .layout-1 .css-wrapper .css-content {
     max-width: 600px;
     margin: 0px auto;
     padding: 10px;
     background: rgba(255, 255, 255, 0.7);
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); }
-    #vision .css-wrapper .css-content h2 {
+    .layout-1 .css-wrapper .css-content h2 {
       padding: 5px 25px;
       margin: 0px auto 10px;
       border: 1px solid #1565C0;
@@ -129,13 +129,13 @@
       text-align: center;
       box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
       display: inline-block; }
-    #vision .css-wrapper .css-content .css-title {
+    .layout-1 .css-wrapper .css-content .css-title {
       padding: 0px 10px;
       font-size: 30px; }
-    #vision .css-wrapper .css-content .css-description {
+    .layout-1 .css-wrapper .css-content .css-description {
       padding: 10px; }
 
-#vision h2 {
+.layout-1 h2 {
   font-size: 30px; }
 
 body {
@@ -151,8 +151,5 @@ body {
 
 .clear {
   clear: both; }
-
-.hide {
-  display: none; }
 
 /*# sourceMappingURL=bundle.css.map*/
