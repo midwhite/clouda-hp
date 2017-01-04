@@ -1,23 +1,35 @@
 .layout-1 {
+  .css-bg-vision {
+    background-image: url('/image/bg/vision.jpg');
+  }
+  .css-bg-classroom {
+    background-image: url('/image/bg/classroom.jpg');
+  }
+  .css-bg-technology {
+    background-image: url('/image/bg/technology.jpg');
+  }
+  .css-bg-sky {
+    background-image: url('/image/bg/sky.jpg');
+  }
   .css-bg-vision-1 {
-    background-image: url('/image/bg/vision_1.png');
+    background-image: url('/image/bg/vision.jpg');
   }
   .css-bg-vision-2 {
-    background-image: url('/image/bg/vision_2.png');
+    background-image: url('/image/bg/workshop.png');
   }
   .css-bg-vision-3 {
-    background-image: url('/image/bg/vision_3.png');
+    background-image: url('/image/bg/actions.jpg');
   }
   .css-wrapper {
     padding: 10px;
     background: {
-      position: center;
-      size: cover;
+      position: top;
+      size: contain;
       repeat: no-repeat;
     }
     .css-content {
       max-width: 600px;
-      margin: 0px auto;
+      margin: 0px auto 10px;
       padding: 10px;
       background: rgba(255,255,255,.7);
       box-shadow: 2px 2px 5px rgba(0,0,0,.7);

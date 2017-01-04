@@ -99,23 +99,35 @@
   #home .firstview {
     height: 800px; } }
 
+.layout-1 .css-bg-vision {
+  background-image: url("/image/bg/vision.jpg"); }
+
+.layout-1 .css-bg-classroom {
+  background-image: url("/image/bg/classroom.jpg"); }
+
+.layout-1 .css-bg-technology {
+  background-image: url("/image/bg/technology.jpg"); }
+
+.layout-1 .css-bg-sky {
+  background-image: url("/image/bg/sky.jpg"); }
+
 .layout-1 .css-bg-vision-1 {
-  background-image: url("/image/bg/vision_1.png"); }
+  background-image: url("/image/bg/vision.jpg"); }
 
 .layout-1 .css-bg-vision-2 {
-  background-image: url("/image/bg/vision_2.png"); }
+  background-image: url("/image/bg/workshop.png"); }
 
 .layout-1 .css-bg-vision-3 {
-  background-image: url("/image/bg/vision_3.png"); }
+  background-image: url("/image/bg/actions.jpg"); }
 
 .layout-1 .css-wrapper {
   padding: 10px;
-  background-position: center;
-  background-size: cover;
+  background-position: top;
+  background-size: contain;
   background-repeat: no-repeat; }
   .layout-1 .css-wrapper .css-content {
     max-width: 600px;
-    margin: 0px auto;
+    margin: 0px auto 10px;
     padding: 10px;
     background: rgba(255, 255, 255, 0.7);
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); }
