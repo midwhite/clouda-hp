@@ -76,9 +76,19 @@
   background-size: cover;
   background-repeat: no-repeat; }
 
+#home .firstview_1 {
+  background-image: url("/image/firstview_1m.png"); }
+
+#home .firstview_2 {
+  background-image: url("/image/firstview_2m.png"); }
+
 @media screen and (min-width: 501px) {
   #home .firstview {
-    height: 500px; } }
+    height: 500px; }
+  #home .firstview_1 {
+    background-image: url("/image/firstview_1.png"); }
+  #home .firstview_2 {
+    background-image: url("/image/firstview_2.png"); } }
 
 @media screen and (min-width: 801px) {
   #home .firstview {
@@ -87,6 +97,15 @@
 @media screen and (min-width: 1001px) {
   #home .firstview {
     height: 800px; } }
+
+#vision .css-bg-vision-1 {
+  background-image: url("/image/bg/vision_1.png"); }
+
+#vision .css-bg-vision-2 {
+  background-image: url("/image/bg/vision_2.png"); }
+
+#vision .css-bg-vision-3 {
+  background-image: url("/image/bg/vision_3.png"); }
 
 #vision .css-wrapper {
   padding: 10px;
