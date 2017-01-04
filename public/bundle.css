@@ -9,7 +9,8 @@
   #header h1 {
     padding: 3px 10px;
     font-size: 24px;
-    font-weight: bold; }
+    font-weight: bold;
+    font-family: serif; }
     #header h1 span {
       font-size: 12px;
       font-weight: normal; }
@@ -124,6 +125,7 @@
       border: 1px solid #1565C0;
       background: rgba(255, 255, 255, 0.5);
       color: #1565C0;
+      font-size: 24px;
       text-align: center;
       box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
       display: inline-block; }
