@@ -146,9 +146,27 @@
       font-size: 30px; }
     .layout-1 .css-wrapper .css-content .css-description {
       padding: 10px; }
+    .layout-1 .css-wrapper .css-content .css-next-link {
+      width: 160px;
+      padding: 10px 15px;
+      margin: 10px auto;
+      border: 1px solid #FF5722;
+      background: #FFF;
+      color: #FF5722;
+      text-decoration: none;
+      text-align: center;
+      box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+      display: block; }
+      .layout-1 .css-wrapper .css-content .css-next-link:hover {
+        background: #FF5722;
+        color: #FFF; }
 
 .layout-1 h2 {
   font-size: 30px; }
+
+@media screen and (min-width: 501px) {
+  .layout-1 .css-wrapper .css-content .css-description p {
+    font-size: 18px; } }
 
 .css-404-error {
   padding: 40px 0px; }
