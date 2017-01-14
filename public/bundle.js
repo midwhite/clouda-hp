@@ -27679,13 +27679,35 @@
   \***************************/
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
 	
 	var Tool = {
 	  rand: function rand(num) {
 	    return Math.floor(Math.random() * num);
+	  },
+	  ajax: {
+	    get: function get(url) {
+	      var json = void 0;
+	      if (navigator.userAgent.toLowerCase().indexOf('safari') == -1) {
+	        fetch('/json/themes.json').then(function (res) {
+	          return res.json();
+	        }).then(function (data) {
+	          json = data;
+	        });
+	      } else {
+	        var request = new XMLHttpRequest();
+	        request.open('GET', url, false);
+	        request.send();
+	        if (request.status === 200) {
+	          json = request.responseText;
+	        }
+	      }
+	      return JSON.parse(json);
+	    }
 	  }
 	};
+	
+	var Ajax = {};
 	
 	module.exports = Tool;
 
@@ -28452,34 +28474,43 @@
 	  function Theme() {
 	    _classCallCheck(this, Theme);
 	
-	    return _possibleConstructorReturn(this, (Theme.__proto__ || Object.getPrototypeOf(Theme)).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, (Theme.__proto__ || Object.getPrototypeOf(Theme)).call(this));
+	
+	    _this.state = {
+	      themes: []
+	    };
+	    return _this;
 	  }
 	
 	  _createClass(Theme, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      this.setState({
+	        themes: Tool.ajax.get('/json/themes.json').reverse()
+	      });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
+	
 	      return _react2.default.createElement(
 	        'div',
 	        null,
 	        _react2.default.createElement(Header, null),
 	        _react2.default.createElement(
 	          'section',
-	          { id: 'theme', className: 'contentWrapper layout-1' },
+	          { id: 'theme', className: 'contentWrapper layout-2' },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'css-wrapper css-bg-vision-1' },
+	            { className: 'css-wrapper css-bg-pencil' },
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'css-content' },
 	              _react2.default.createElement(
 	                'h2',
 	                null,
-	                '\u52C9\u5F37\u4F1A\u30C6\u30FC\u30DE'
-	              ),
-	              _react2.default.createElement(
-	                'p',
-	                { className: 'css-title' },
-	                '\u30D3\u30B8\u30E7\u30F3\u3002\u30D3\u30B8\u30E7\u30F3\u3002\u30D3\u30B8\u30E7\u30F3\u3002'
+	                '\u52C9\u5F37\u4F1A\u306E\u6D3B\u52D5\u5B9F\u7E3E'
 	              ),
 	              _react2.default.createElement(
 	                'div',
@@ -28487,64 +28518,23 @@
 	                _react2.default.createElement(
 	                  'p',
 	                  null,
-	                  '\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002'
+	                  'Cloud.A\u3067\u4ECA\u307E\u3067\u5B9F\u65BD\u3057\u305F',
+	                  this.state.themes.length,
+	                  '\u56DE\u5206\u306E\u52C9\u5F37\u4F1A\u306E\u30C6\u30FC\u30DE\u3092\u63B2\u8F09\u3057\u3066\u3044\u307E\u3059\u3002'
 	                )
 	              )
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'css-wrapper css-bg-vision-2' },
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'css-content' },
-	              _react2.default.createElement(
-	                'h2',
-	                null,
-	                '\u52C9\u5F37\u4F1A\u30C6\u30FC\u30DE'
-	              ),
-	              _react2.default.createElement(
-	                'p',
-	                { className: 'css-title' },
-	                '\u30D3\u30B8\u30E7\u30F3\u3002\u30D3\u30B8\u30E7\u30F3\u3002\u30D3\u30B8\u30E7\u30F3\u3002'
-	              ),
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'css-description' },
-	                _react2.default.createElement(
-	                  'p',
-	                  null,
-	                  '\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002'
-	                )
-	              )
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'css-wrapper css-bg-vision-3' },
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'css-content' },
-	              _react2.default.createElement(
-	                'h2',
-	                null,
-	                '\u52C9\u5F37\u4F1A\u30C6\u30FC\u30DE'
-	              ),
-	              _react2.default.createElement(
-	                'p',
-	                { className: 'css-title' },
-	                '\u30D3\u30B8\u30E7\u30F3\u3002\u30D3\u30B8\u30E7\u30F3\u3002\u30D3\u30B8\u30E7\u30F3\u3002'
-	              ),
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'css-description' },
-	                _react2.default.createElement(
-	                  'p',
-	                  null,
-	                  '\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002'
-	                )
-	              )
-	            )
+	            ),
+	            function () {
+	              if (_this2.state.themes.length == 0) {
+	                return _react2.default.createElement(
+	                  'div',
+	                  { className: 'css-no-theme' },
+	                  'Now Loading...'
+	                );
+	              } else {
+	                return _react2.default.createElement(ThemeList, { themes: _this2.state.themes });
+	              }
+	            }()
 	          )
 	        )
 	      );
@@ -28552,6 +28542,62 @@
 	  }]);
 	
 	  return Theme;
+	}(_react.Component);
+	
+	var ThemeList = function (_Component2) {
+	  _inherits(ThemeList, _Component2);
+	
+	  function ThemeList() {
+	    _classCallCheck(this, ThemeList);
+	
+	    return _possibleConstructorReturn(this, (ThemeList.__proto__ || Object.getPrototypeOf(ThemeList)).apply(this, arguments));
+	  }
+	
+	  _createClass(ThemeList, [{
+	    key: 'render',
+	    value: function render() {
+	      var themesNode = this.props.themes.map(function (theme) {
+	        var bgImageStyle = {
+	          backgroundPosition: 'center',
+	          backgroundSize: 'cover',
+	          backgroundImage: theme.image ? 'url("/image/ws/' + theme.image + '")' : 'url("/image/bg/workshop.png")'
+	        };
+	        return _react2.default.createElement(
+	          'div',
+	          { key: theme.id, className: 'css-theme' },
+	          _react2.default.createElement('div', { className: 'css-image', style: bgImageStyle }),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'css-ws-content' },
+	            _react2.default.createElement(
+	              'p',
+	              { className: 'css-date' },
+	              _react2.default.createElement(
+	                'span',
+	                { className: 'css-number' },
+	                theme.id
+	              ),
+	              ' ',
+	              theme.date
+	            ),
+	            _react2.default.createElement(
+	              'h3',
+	              null,
+	              theme.title
+	            )
+	          ),
+	          _react2.default.createElement('div', { className: 'clear' })
+	        );
+	      });
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'css-themes' },
+	        themesNode
+	      );
+	    }
+	  }]);
+	
+	  return ThemeList;
 	}(_react.Component);
 	
 	module.exports = Theme;
@@ -28588,22 +28634,36 @@
 	  function Projects() {
 	    _classCallCheck(this, Projects);
 	
-	    return _possibleConstructorReturn(this, (Projects.__proto__ || Object.getPrototypeOf(Projects)).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, (Projects.__proto__ || Object.getPrototypeOf(Projects)).call(this));
+	
+	    _this.state = {
+	      projects: []
+	    };
+	    return _this;
 	  }
 	
 	  _createClass(Projects, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      this.setState({
+	        projects: Tool.ajax.get('/json/projects.json')
+	      });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
+	
 	      return _react2.default.createElement(
 	        'div',
 	        null,
 	        _react2.default.createElement(Header, null),
 	        _react2.default.createElement(
 	          'section',
-	          { id: 'projects', className: 'contentWrapper layout-1' },
+	          { id: 'project', className: 'contentWrapper layout-2' },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'css-wrapper css-bg-vision-1' },
+	            { className: 'css-wrapper css-bg-projects' },
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'css-content' },
@@ -28613,74 +28673,26 @@
 	                '\u30D7\u30ED\u30B8\u30A7\u30AF\u30C8\u7D39\u4ECB'
 	              ),
 	              _react2.default.createElement(
-	                'p',
-	                { className: 'css-title' },
-	                '\u30D3\u30B8\u30E7\u30F3\u3002\u30D3\u30B8\u30E7\u30F3\u3002\u30D3\u30B8\u30E7\u30F3\u3002'
-	              ),
-	              _react2.default.createElement(
 	                'div',
 	                { className: 'css-description' },
 	                _react2.default.createElement(
 	                  'p',
 	                  null,
-	                  '\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002'
+	                  'Cloud.A\u3067\u7A3C\u50CD\u4E2D\u306E\u30D7\u30ED\u30B8\u30A7\u30AF\u30C8\u3092\u3054\u7D39\u4ECB\u3057\u307E\u3059\u3002'
 	                )
 	              )
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'css-wrapper css-bg-vision-2' },
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'css-content' },
-	              _react2.default.createElement(
-	                'h2',
-	                null,
-	                '\u30D7\u30ED\u30B8\u30A7\u30AF\u30C8\u7D39\u4ECB'
-	              ),
-	              _react2.default.createElement(
-	                'p',
-	                { className: 'css-title' },
-	                '\u30D3\u30B8\u30E7\u30F3\u3002\u30D3\u30B8\u30E7\u30F3\u3002\u30D3\u30B8\u30E7\u30F3\u3002'
-	              ),
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'css-description' },
-	                _react2.default.createElement(
-	                  'p',
-	                  null,
-	                  '\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002'
-	                )
-	              )
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'css-wrapper css-bg-vision-3' },
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'css-content' },
-	              _react2.default.createElement(
-	                'h2',
-	                null,
-	                '\u30D7\u30ED\u30B8\u30A7\u30AF\u30C8\u7D39\u4ECB'
-	              ),
-	              _react2.default.createElement(
-	                'p',
-	                { className: 'css-title' },
-	                '\u30D3\u30B8\u30E7\u30F3\u3002\u30D3\u30B8\u30E7\u30F3\u3002\u30D3\u30B8\u30E7\u30F3\u3002'
-	              ),
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'css-description' },
-	                _react2.default.createElement(
-	                  'p',
-	                  null,
-	                  '\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002'
-	                )
-	              )
-	            )
+	            ),
+	            function () {
+	              if (_this2.state.projects.length == 0) {
+	                return _react2.default.createElement(
+	                  'div',
+	                  { className: 'css-no-theme' },
+	                  'Now Loading...'
+	                );
+	              } else {
+	                return _react2.default.createElement(ProjectList, { projects: _this2.state.projects });
+	              }
+	            }()
 	          )
 	        )
 	      );
@@ -28688,6 +28700,67 @@
 	  }]);
 	
 	  return Projects;
+	}(_react.Component);
+	
+	var ProjectList = function (_Component2) {
+	  _inherits(ProjectList, _Component2);
+	
+	  function ProjectList() {
+	    _classCallCheck(this, ProjectList);
+	
+	    return _possibleConstructorReturn(this, (ProjectList.__proto__ || Object.getPrototypeOf(ProjectList)).apply(this, arguments));
+	  }
+	
+	  _createClass(ProjectList, [{
+	    key: 'render',
+	    value: function render() {
+	      var projectsNode = this.props.projects.map(function (project) {
+	        var bgImageStyle = {
+	          backgroundPosition: 'center',
+	          backgroundSize: 'cover',
+	          backgroundImage: project.image ? 'url("/image/pj/' + project.image + '")' : 'url("/image/bg/workshop.png")'
+	        };
+	        return _react2.default.createElement(
+	          'div',
+	          { key: project.id, className: 'css-theme' },
+	          _react2.default.createElement('div', { className: 'css-image', style: bgImageStyle }),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'css-ws-content' },
+	            _react2.default.createElement(
+	              'p',
+	              { className: 'css-date' },
+	              _react2.default.createElement(
+	                'span',
+	                { className: 'css-number' },
+	                project.id
+	              ),
+	              ' ',
+	              project.target
+	            ),
+	            _react2.default.createElement(
+	              'h3',
+	              { className: 'css-pj-title' },
+	              project.title
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'css-pj-description' },
+	              project.description
+	            )
+	          ),
+	          _react2.default.createElement('div', { className: 'clear' })
+	        );
+	      });
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'css-themes' },
+	        projectsNode
+	      );
+	    }
+	  }]);
+	
+	  return ProjectList;
 	}(_react.Component);
 	
 	module.exports = Projects;
