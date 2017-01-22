@@ -7,12 +7,15 @@ class Header extends Component {
     this.state = {
       menu: window.screen.width > 500,
       menu_about: false,
-      menu_history: false
+      menu_activities: false,
+      menu_recruit: false,
+      menu_social: false
     }
-    this.toggleMenu        = this.toggleMenu.bind(this);
-    this.toggleMenuAbout   = this.toggleMenuAbout.bind(this);
-    this.toggleMenuHistory = this.toggleMenuHistory.bind(this);
-    this.toggleMenuInfo    = this.toggleMenuInfo.bind(this);
+    this.toggleMenu           = this.toggleMenu.bind(this);
+    this.toggleMenuAbout      = this.toggleMenuAbout.bind(this);
+    this.toggleMenuActivities = this.toggleMenuActivities.bind(this);
+    this.toggleMenuRecruit    = this.toggleMenuRecruit.bind(this);
+    this.toggleMenuSocial    = this.toggleMenuSocial.bind(this);
   }
   toggleMenu(){
     this.setState({
@@ -22,22 +25,33 @@ class Header extends Component {
   toggleMenuAbout(){
     this.setState({
       menu_about: !this.state.menu_about,
-      menu_history: false,
-      menu_info: false
+      menu_activities: false,
+      menu_recruit: false,
+      menu_social: false
     });
   }
-  toggleMenuHistory(){
+  toggleMenuActivities(){
     this.setState({
       menu_about: false,
-      menu_history: !this.state.menu_history,
-      menu_info: false
+      menu_activities: !this.state.menu_activities,
+      menu_recruit: false,
+      menu_social: false
     });
   }
-  toggleMenuInfo(){
+  toggleMenuRecruit(){
     this.setState({
       menu_about: false,
-      menu_history: false,
-      menu_info: !this.state.menu_info
+      menu_activities: false,
+      menu_recruit: !this.state.menu_recruit,
+      menu_social: false
+    });
+  }
+  toggleMenuSocial(){
+    this.setState({
+      menu_about: false,
+      menu_activities: false,
+      menu_recruit: false,
+      menu_social: !this.state.menu_social
     });
   }
   render(){
@@ -60,8 +74,8 @@ class Header extends Component {
                 <li className="css-menu-item">
                   <div className="css-menu-area" onClick={this.toggleMenuAbout}>
                     <Link className="css-link">
-                      <p className="css-title">About</p>
-                      <p className="css-description">活動内容</p>
+                      <p className="css-title">Information</p>
+                      <p className="css-description">団体情報</p>
                     </Link>
                     {(()=>{
                       // Aboutメニュー子要素の表示
@@ -76,20 +90,14 @@ class Header extends Component {
                             </li>
                             <li className="css-menu-child">
                               <Link to="/about" className="css-link">
-                                <p className="css-title">Activity</p>
+                                <p className="css-title">About</p>
                                 <p className="css-description">活動概要</p>
                               </Link>
                             </li>
                             <li className="css-menu-child">
-                              <Link to="/about/workshop" className="css-link">
-                                <p className="css-title">Workshop</p>
-                                <p className="css-description">勉強会</p>
-                              </Link>
-                            </li>
-                            <li className="css-menu-child">
-                              <Link to="/about/actions" className="css-link">
-                                <p className="css-title">Actions</p>
-                                <p className="css-description">プロジェクト活動</p>
+                              <Link to="/members" className="css-link">
+                                <p className="css-title">Members</p>
+                                <p className="css-description">メンバー紹介</p>
                               </Link>
                             </li>
                             <div className="clear"></div>
@@ -100,30 +108,30 @@ class Header extends Component {
                   </div>
                 </li>
                 <li className="css-menu-item">
-                  <div className="css-menu-area" onClick={this.toggleMenuHistory}>
+                  <div className="css-menu-area" onClick={this.toggleMenuActivities}>
                     <Link className="css-link">
-                      <p className="css-title">History</p>
-                      <p className="css-description">活動実績</p>
+                      <p className="css-title">Activities</p>
+                      <p className="css-description">活動情報</p>
                     </Link>
                     {(()=>{
                       // Historyメニュー子要素の表示
-                      if(this.state.menu_history){
+                      if(this.state.menu_activities){
                         return(
                           <ul className="css-menu-children">
                             <li className="css-menu-child">
-                              <Link to="/history/theme" className="css-link">
-                                <p className="css-title">Theme</p>
-                                <p className="css-description">勉強会テーマ</p>
+                              <Link to="/about/workshop" className="css-link">
+                                <p className="css-title">Workshop</p>
+                                <p className="css-description">勉強会</p>
                               </Link>
                             </li>
                             <li className="css-menu-child">
-                              <Link to="/history/projects" className="css-link">
+                              <Link to="/about/projects" className="css-link">
                                 <p className="css-title">Projects</p>
-                                <p className="css-description">プロジェクト紹介</p>
+                                <p className="css-description">プロジェクト活動</p>
                               </Link>
                             </li>
                             <li className="css-menu-child">
-                              <Link to="/history/photos" className="css-link">
+                              <Link to="/about/photos" className="css-link">
                                 <p className="css-title">Photo Gallary</p>
                                 <p className="css-description">活動風景</p>
                               </Link>
@@ -135,30 +143,28 @@ class Header extends Component {
                     })()}
                   </div>
                 </li>
+
                 <li className="css-menu-item">
-                  <div className="css-menu-area" onClick={this.toggleMenuInfo}>
+                  <div className="css-menu-area">
+                    <Link to="/recruit" className="css-link">
+                      <p className="css-title">Recruit</p>
+                      <p className="css-description">新歓情報</p>
+                    </Link>
+                  </div>
+                </li>
+
+                <li className="css-menu-item">
+                  <div className="css-menu-area" onClick={this.toggleMenuSocial}>
                     <Link className="css-link">
-                      <p className="css-title">Information</p>
-                      <p className="css-description">活動情報</p>
+                      <p className="css-title">Social</p>
+                      <p className="css-description">発信情報</p>
                     </Link>
 
                     {(()=>{
                       // Informationメニュー子要素の表示
-                      if(this.state.menu_info){
+                      if(this.state.menu_social){
                         return(
                           <ul className="css-menu-children">
-                            <li className="css-menu-child">
-                              <Link to="/members" className="css-link">
-                                <p className="css-title">Members</p>
-                                <p className="css-description">メンバー紹介</p>
-                              </Link>
-                            </li>
-                            <li className="css-menu-child">
-                              <Link to="/recruit" className="css-link">
-                                <p className="css-title">Recruit</p>
-                                <p className="css-description">会員募集</p>
-                              </Link>
-                            </li>
                             <li className="css-menu-child">
                               <a href="https://twitter.com/cloudacd/" className="css-link" target="_blank">
                                 <p className="css-title">Twitter</p>
@@ -171,6 +177,12 @@ class Header extends Component {
                                 <p className="css-description">フェイスブック</p>
                               </a>
                             </li>
+                            <li className="css-menu-child">
+                              <a href="http://blog.livedoor.jp/midwhite/archives/cat_73905.html" className="css-link" target="_blank">
+                                <p className="css-title">Blog</p>
+                                <p className="css-description">活動ブログ</p>
+                              </a>
+                            </li>
                             <div className="clear"></div>
                           </ul>
                         );
@@ -178,14 +190,7 @@ class Header extends Component {
                     })()}
                   </div>
                 </li>
-                <li className="css-menu-item">
-                  <div className="css-menu-area">
-                    <a href="http://blog.livedoor.jp/midwhite/" className="css-link" target="_blank">
-                      <p className="css-title">Blog</p>
-                      <p className="css-description">活動ブログ</p>
-                    </a>
-                  </div>
-                </li>
+
               </ul>
             );
           }

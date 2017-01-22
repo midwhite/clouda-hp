@@ -23,7 +23,7 @@ class Projects extends Component {
             <div className="css-content">
               <h2>プロジェクト紹介</h2>
               <div className="css-description">
-                <p>Cloud.Aで稼働中のプロジェクトをご紹介します。</p>
+                <p>Cloud.Aで開発されたプロジェクトをご紹介します。</p>
               </div>
             </div>
             {(()=>{
@@ -50,14 +50,16 @@ class ProjectList extends Component {
       const bgImageStyle = {
         backgroundPosition: 'center',
         backgroundSize: 'cover',
-        backgroundImage: (project.image) ? 'url("/image/pj/'+project.image+'")' : 'url("/image/bg/workshop.png")'
+        backgroundImage: 'url("/image/pj/'+project.image+'")'
       }
       return(
         <div key={project.id} className="css-theme">
-          <div className="css-image" style={bgImageStyle}></div>
+          <div className="css-image" style={bgImageStyle}>
+            <a href={project.link} target="_blank" className="css-image-link"></a>
+          </div>
           <div className="css-ws-content">
             <p className="css-date"><span className="css-number">{project.id}</span> {project.target}</p>
-            <h3 className="css-pj-title">{project.title}</h3>
+            <h3 className="css-pj-title"><a href={project.link} target="_blank">{project.title}</a></h3>
             <div className="css-pj-description">{project.description}</div>
           </div>
           <div className="clear"></div>

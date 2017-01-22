@@ -115,6 +115,15 @@
 .layout-1 .css-bg-pencil {
   background-image: url("/image/bg/workshop.png"); }
 
+.layout-1 .css-bg-about {
+  background-image: url("/image/bg/about.jpg"); }
+
+.layout-1 .css-bg-snow {
+  background-image: url("/image/bg/snow.jpg"); }
+
+.layout-1 .css-bg-star {
+  background-image: url("/image/bg/star.jpg"); }
+
 .layout-1 .css-bg-vision-1 {
   background-image: url("/image/bg/vision.jpg"); }
 
@@ -133,7 +142,8 @@
     max-width: 600px;
     margin: 0px auto 10px;
     padding: 10px;
-    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid #757575;
+    background: rgba(255, 255, 255, 0.8);
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); }
     .layout-1 .css-wrapper .css-content h2 {
       padding: 5px 25px;
@@ -187,7 +197,7 @@
     max-width: 780px;
     margin: 0px auto 10px;
     padding: 10px;
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.8);
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); }
     .layout-2 .css-wrapper .css-content h2 {
       padding: 0px 10px;
@@ -199,6 +209,7 @@
     margin: 0px auto;
     text-align: center; }
     .layout-2 .css-wrapper .css-themes .css-theme {
+      border: 1px solid #757575;
       padding: 10px;
       margin-bottom: 10px;
       background: rgba(255, 255, 255, 0.7);
@@ -206,6 +217,10 @@
       box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); }
       .layout-2 .css-wrapper .css-themes .css-theme .css-image {
         background: #EEE; }
+        .layout-2 .css-wrapper .css-themes .css-theme .css-image .css-image-link {
+          width: 100%;
+          height: 100%;
+          display: block; }
       .layout-2 .css-wrapper .css-themes .css-theme .css-ws-content .css-pj-title {
         font-size: 30px;
         font-weight: bold; }
@@ -253,6 +268,12 @@
 body {
   font-family: 'Noto Sans Japanese', sans-serif;
   font-size: 100%; }
+
+a {
+  color: #1976D2;
+  text-decoration: none; }
+  a:hover {
+    color: #2196F3; }
 
 .contentWrapper {
   margin-top: 42px; }

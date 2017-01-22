@@ -14,6 +14,15 @@
   .css-bg-pencil {
     background-image: url('/image/bg/workshop.png');
   }
+  .css-bg-about {
+    background-image: url('/image/bg/about.jpg');
+  }
+  .css-bg-snow {
+    background-image: url('/image/bg/snow.jpg');
+  }
+  .css-bg-star {
+    background-image: url('/image/bg/star.jpg');
+  }
   .css-bg-vision-1 {
     background-image: url('/image/bg/vision.jpg');
   }
@@ -34,7 +43,8 @@
       max-width: 600px;
       margin: 0px auto 10px;
       padding: 10px;
-      background: rgba(255,255,255,.7);
+      border: 1px solid #757575;
+      background: rgba(255,255,255,.8);
       box-shadow: 2px 2px 5px rgba(0,0,0,.7);
       h2 {
         padding: 5px 25px;

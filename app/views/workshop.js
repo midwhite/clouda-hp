@@ -2,40 +2,41 @@ import React, {Component} from 'react';
 const Header = require('./header.js');
 const Tool = require('./tool.js');
 
-class Workshop extends Component {
+class Theme extends Component {
+  constructor(){
+    super();
+    this.state = {
+      themes: []
+    }
+  }
+  componentDidMount(){
+    this.setState({
+      themes: Tool.ajax.get('/json/themes.json').reverse()
+    });
+  }
   render(){
     return(
       <div>
         <Header />
-        <section id="workshop" className="contentWrapper layout-1">
-          <div className="css-wrapper css-bg-vision-1">
+        <section id="theme" className="contentWrapper layout-2">
+          <div className="css-wrapper css-bg-pencil">
             <div className="css-content">
-              <h2>勉強会</h2>
-              <p className="css-title">ビジョン。ビジョン。ビジョン。</p>
+              <h2>勉強会の活動実績</h2>
               <div className="css-description">
-                <p>説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。</p>
+                <p>Cloud.Aで今まで実施した{this.state.themes.length}回分の勉強会のテーマを掲載しています。</p>
               </div>
             </div>
-          </div>
-
-          <div className="css-wrapper css-bg-vision-2">
-            <div className="css-content">
-              <h2>勉強会</h2>
-              <p className="css-title">ビジョン。ビジョン。ビジョン。</p>
-              <div className="css-description">
-                <p>説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="css-wrapper css-bg-vision-3">
-            <div className="css-content">
-              <h2>勉強会</h2>
-              <p className="css-title">ビジョン。ビジョン。ビジョン。</p>
-              <div className="css-description">
-                <p>説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。説明文。</p>
-              </div>
-            </div>
+            {(()=>{
+              if(this.state.themes.length == 0){
+                return(
+                  <div className="css-no-theme">Now Loading...</div>
+                );
+              } else {
+                return(
+                  <ThemeList themes={this.state.themes} />
+                );
+              }
+            })()}
           </div>
         </section>
       </div>
@@ -43,4 +44,31 @@ class Workshop extends Component {
   }
 }
 
-module.exports = Workshop;
+class ThemeList extends Component {
+  render(){
+    const themesNode = this.props.themes.map((theme)=>{
+      const bgImageStyle = {
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        backgroundImage: (theme.image) ? 'url("/image/ws/'+theme.image+'")' : 'url("/image/bg/workshop.png")'
+      }
+      return(
+        <div key={theme.id} className="css-theme">
+          <div className="css-image" style={bgImageStyle}></div>
+          <div className="css-ws-content">
+            <p className="css-date"><span className="css-number">{theme.id}</span> {theme.date}</p>
+            <h3>{theme.title}</h3>
+          </div>
+          <div className="clear"></div>
+        </div>
+      );
+    });
+    return(
+      <div className="css-themes">
+        {themesNode}
+      </div>
+    );
+  }
+}
+
+module.exports = Theme;
