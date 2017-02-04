@@ -1,0 +1,80 @@
+.layout-3 {
+  .css-sidebar {
+    h2 {
+      padding: 5px;
+      text-align: center;
+    }
+    h3 {
+      padding: 5px 10px;
+      margin-top: 2px;
+      background: #2196F3;
+      color: #FFFFFF;
+      border: 1px solid #2196F3;
+      font-size: 17px;
+      transition: all 300ms 0s ease;
+      &:hover {
+        background: #42A5F5;
+      }
+    }
+    .css-side-menu {
+      .css-menu-title {
+        padding: 10px 0px;
+        border-bottom: 1px solid #1E88E5;
+        border-left: 10px solid #FFFFFF;
+        color: #616161;
+        font-size: 14px;
+        transition: all 300ms 0s ease;
+        &:hover {
+          border-color: #42A5F5;
+          background: #42A5F5;
+          color: #FFFFFF;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  .css-main-content {
+    padding: 10px;
+    h2 {
+      color: #424242;
+      font-size: 30px;
+      padding: 5px 10px;
+      border-bottom: 1px solid #2196F3;
+      margin-bottom: 5px;
+      font-weight: bold;
+      font-family: serif;
+    }
+    .css-section {
+      h3 {
+        padding: 5px 10px;
+        border: 1px solid #2196F3;
+        font-size: 18px;
+      }
+      .css-description {
+        padding: 10px;
+        p {
+          color: #616161;
+          text-indent: .5em;
+        }
+        .css-list {
+          &:before {
+            content: '◆';
+            margin-right: 5px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 501px){
+  .layout-3 {
+    .css-sidebar {
+      width: 200px;
+      float: left;
+    }
+    .css-main-content {
+      margin-left: 200px;
+    }
+  }
+}

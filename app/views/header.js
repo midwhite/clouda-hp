@@ -15,7 +15,7 @@ class Header extends Component {
     this.toggleMenuAbout      = this.toggleMenuAbout.bind(this);
     this.toggleMenuActivities = this.toggleMenuActivities.bind(this);
     this.toggleMenuRecruit    = this.toggleMenuRecruit.bind(this);
-    this.toggleMenuSocial    = this.toggleMenuSocial.bind(this);
+    this.toggleMenuSocial     = this.toggleMenuSocial.bind(this);
   }
   toggleMenu(){
     this.setState({

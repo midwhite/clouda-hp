@@ -61,7 +61,7 @@
 	
 	var _app2 = _interopRequireDefault(_app);
 	
-	__webpack_require__(/*! ./app/app.scss */ 245);
+	__webpack_require__(/*! ./app/app.scss */ 246);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -22048,8 +22048,8 @@
 	var Photos = __webpack_require__(/*! ./views/photos.js */ 241);
 	var Members = __webpack_require__(/*! ./views/members.js */ 242);
 	var Recruit = __webpack_require__(/*! ./views/recruit.js */ 243);
-	var Prepare = __webpack_require__(/*! ./views/in_preparation.js */ 246);
-	var NoMatch = __webpack_require__(/*! ./views/not_found.js */ 244);
+	var Prepare = __webpack_require__(/*! ./views/in_preparation.js */ 244);
+	var NoMatch = __webpack_require__(/*! ./views/not_found.js */ 245);
 	
 	var Application = function (_Component) {
 	  _inherits(Application, _Component);
@@ -28501,7 +28501,16 @@
 	              'h3',
 	              null,
 	              theme.title
-	            )
+	            ),
+	            function () {
+	              if (theme.doc) {
+	                return _react2.default.createElement(
+	                  'a',
+	                  { href: theme.doc, target: '_blank', className: 'css-link-btn' },
+	                  theme.doc.indexOf('docs.google.com') == -1 ? '報告資料' : '発表資料'
+	                );
+	              }
+	            }()
 	          ),
 	          _react2.default.createElement('div', { className: 'clear' })
 	        );
@@ -28994,87 +29003,188 @@
 	  function Recruit() {
 	    _classCallCheck(this, Recruit);
 	
-	    return _possibleConstructorReturn(this, (Recruit.__proto__ || Object.getPrototypeOf(Recruit)).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, (Recruit.__proto__ || Object.getPrototypeOf(Recruit)).call(this));
+	
+	    _this.state = {
+	      currentMenu: 'all',
+	      currentContent: 'schedule'
+	    };
+	    return _this;
 	  }
 	
 	  _createClass(Recruit, [{
+	    key: 'openMenu',
+	    value: function openMenu(name) {
+	      if (window.screen.width > 500) {
+	        return;
+	      }
+	      if (this.state.currentMenu === name) {
+	        name = 'none';
+	      }
+	      this.setState({
+	        currentMenu: name
+	      });
+	    }
+	  }, {
+	    key: 'openContent',
+	    value: function openContent(name) {
+	      this.setState({
+	        currentMenu: window.screen.width < 500 ? 'none' : 'all',
+	        currentContent: name
+	      });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
+	
 	      return _react2.default.createElement(
 	        'div',
-	        null,
+	        { className: 'layout-3' },
 	        _react2.default.createElement(Header, null),
 	        _react2.default.createElement(
 	          'div',
-	          { id: 'recruit' },
+	          { id: 'recruit', className: 'contentWrapper' },
 	          _react2.default.createElement(
-	            'h2',
-	            null,
-	            '\u52DF\u96C6\u30DD\u30B9\u30C8'
+	            'div',
+	            { className: 'css-sidebar' },
+	            _react2.default.createElement(
+	              'h2',
+	              null,
+	              '\u65B0\u6B53\u60C5\u5831'
+	            ),
+	            _react2.default.createElement(
+	              'h3',
+	              { onClick: this.openMenu.bind(this, 'info') },
+	              '\u65B0\u6B53\u30A4\u30D9\u30F3\u30C8'
+	            ),
+	            function () {
+	              if (_this2.state.currentMenu === 'info' || _this2.state.currentMenu === 'all') {
+	                return _react2.default.createElement(
+	                  'ul',
+	                  { className: 'css-side-menu' },
+	                  _react2.default.createElement(
+	                    'li',
+	                    { onClick: _this2.openContent.bind(_this2, 'schedule') },
+	                    _react2.default.createElement(
+	                      'p',
+	                      { className: 'css-menu-title' },
+	                      '\u30B9\u30B1\u30B8\u30E5\u30FC\u30EB'
+	                    )
+	                  )
+	                );
+	              }
+	            }(),
+	            _react2.default.createElement(
+	              'h2',
+	              null,
+	              '\u53C2\u52A0\u306E\u7A2E\u985E'
+	            ),
+	            _react2.default.createElement(
+	              'h3',
+	              { onClick: this.openMenu.bind(this, 'admin') },
+	              '\u904B\u55B6'
+	            ),
+	            function () {
+	              if (_this2.state.currentMenu === 'admin' || _this2.state.currentMenu === 'all') {
+	                return _react2.default.createElement(
+	                  'ul',
+	                  { className: 'css-side-menu' },
+	                  _react2.default.createElement(
+	                    'li',
+	                    { onClick: _this2.openContent.bind(_this2, 'pr') },
+	                    _react2.default.createElement(
+	                      'p',
+	                      { className: 'css-menu-title' },
+	                      '\u5E83\u5831\u30FB\u4F01\u753B\u90E8'
+	                    )
+	                  ),
+	                  _react2.default.createElement(
+	                    'li',
+	                    { onClick: _this2.openContent.bind(_this2, 'academic') },
+	                    _react2.default.createElement(
+	                      'p',
+	                      { className: 'css-menu-title' },
+	                      '\u5B66\u8853\u7D71\u62EC\u90E8'
+	                    )
+	                  ),
+	                  _react2.default.createElement(
+	                    'li',
+	                    { onClick: _this2.openContent.bind(_this2, 'project') },
+	                    _react2.default.createElement(
+	                      'p',
+	                      { className: 'css-menu-title' },
+	                      '\u30D7\u30ED\u30B8\u30A7\u30AF\u30C8\u7D71\u62EC\u90E8'
+	                    )
+	                  )
+	                );
+	              }
+	            }(),
+	            _react2.default.createElement(
+	              'h3',
+	              { onClick: this.openMenu.bind(this, 'workshop') },
+	              '\u52C9\u5F37\u4F1A'
+	            ),
+	            function () {
+	              if (_this2.state.currentMenu === 'workshop' || _this2.state.currentMenu === 'all') {
+	                return _react2.default.createElement(
+	                  'ul',
+	                  { className: 'css-side-menu' },
+	                  _react2.default.createElement(
+	                    'li',
+	                    { onClick: _this2.openContent.bind(_this2, 'presenter') },
+	                    _react2.default.createElement(
+	                      'p',
+	                      { className: 'css-menu-title' },
+	                      '\u767A\u8868\u8005'
+	                    )
+	                  ),
+	                  _react2.default.createElement(
+	                    'li',
+	                    { onClick: _this2.openContent.bind(_this2, 'participant') },
+	                    _react2.default.createElement(
+	                      'p',
+	                      { className: 'css-menu-title' },
+	                      '\u53C2\u52A0\u8005'
+	                    )
+	                  )
+	                );
+	              }
+	            }(),
+	            _react2.default.createElement(
+	              'h3',
+	              { onClick: this.openMenu.bind(this, 'project') },
+	              '\u30D7\u30ED\u30B8\u30A7\u30AF\u30C8'
+	            ),
+	            function () {
+	              if (_this2.state.currentMenu === 'project' || _this2.state.currentMenu === 'all') {
+	                return _react2.default.createElement(
+	                  'ul',
+	                  { className: 'css-side-menu' },
+	                  _react2.default.createElement(
+	                    'li',
+	                    { onClick: _this2.openContent.bind(_this2, 'joinProject') },
+	                    _react2.default.createElement(
+	                      'p',
+	                      { className: 'css-menu-title' },
+	                      '\u65E2\u5B58\u30D7\u30ED\u30B8\u30A7\u30AF\u30C8'
+	                    )
+	                  ),
+	                  _react2.default.createElement(
+	                    'li',
+	                    { onClick: _this2.openContent.bind(_this2, 'newProject') },
+	                    _react2.default.createElement(
+	                      'p',
+	                      { className: 'css-menu-title' },
+	                      '\u65B0\u898F\u30D7\u30ED\u30B8\u30A7\u30AF\u30C8'
+	                    )
+	                  )
+	                );
+	              }
+	            }()
 	          ),
-	          _react2.default.createElement(
-	            'h3',
-	            null,
-	            'Administration Team'
-	          ),
-	          _react2.default.createElement(
-	            'ul',
-	            null,
-	            _react2.default.createElement(
-	              'li',
-	              null,
-	              '\u5E83\u5831'
-	            ),
-	            _react2.default.createElement(
-	              'li',
-	              null,
-	              '\u5B66\u8853\u30B5\u30DD\u30FC\u30C8'
-	            ),
-	            _react2.default.createElement(
-	              'li',
-	              null,
-	              '\u30D7\u30ED\u30B8\u30A7\u30AF\u30C8\u30B5\u30DD\u30FC\u30C8'
-	            ),
-	            _react2.default.createElement(
-	              'li',
-	              null,
-	              '\u4EA4\u6D41\u4F1A\u4F01\u753B'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'h3',
-	            null,
-	            'Project Team'
-	          ),
-	          _react2.default.createElement(
-	            'ul',
-	            null,
-	            _react2.default.createElement(
-	              'li',
-	              null,
-	              '\u30DE\u30CD\u30FC\u30B8\u30E3\u30FC'
-	            ),
-	            _react2.default.createElement(
-	              'li',
-	              null,
-	              '\u30EA\u30B5\u30FC\u30C1\u30E3\u30FC'
-	            ),
-	            _react2.default.createElement(
-	              'li',
-	              null,
-	              '\u30DE\u30FC\u30B1\u30BF\u30FC'
-	            ),
-	            _react2.default.createElement(
-	              'li',
-	              null,
-	              '\u30A8\u30F3\u30B8\u30CB\u30A2'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'h3',
-	            null,
-	            '\u4F1A\u54E1'
-	          )
+	          _react2.default.createElement(MainContent, { currentContent: this.state.currentContent }),
+	          _react2.default.createElement('div', { className: 'clear' })
 	        )
 	      );
 	    }
@@ -29083,10 +29193,940 @@
 	  return Recruit;
 	}(_react.Component);
 	
+	var MainContent = function (_Component2) {
+	  _inherits(MainContent, _Component2);
+	
+	  function MainContent() {
+	    _classCallCheck(this, MainContent);
+	
+	    return _possibleConstructorReturn(this, (MainContent.__proto__ || Object.getPrototypeOf(MainContent)).apply(this, arguments));
+	  }
+	
+	  _createClass(MainContent, [{
+	    key: 'render',
+	    value: function render() {
+	      switch (this.props.currentContent) {
+	        case 'schedule':
+	          return _react2.default.createElement(
+	            'div',
+	            { className: 'css-main-content' },
+	            _react2.default.createElement(
+	              'h2',
+	              null,
+	              '\u30B9\u30B1\u30B8\u30E5\u30FC\u30EB'
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'css-section' },
+	              _react2.default.createElement(
+	                'h3',
+	                null,
+	                '\u304A\u82B1\u898B\uFF20\u4EE3\u3005\u6728\u516C\u5712'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'css-description' },
+	                _react2.default.createElement(
+	                  'p',
+	                  null,
+	                  '\u30E1\u30F3\u30D0\u30FC\u3068\u306E\u4EA4\u6D41\u3092\u517C\u306D\u3066\u3001\u4EE3\u3005\u6728\u516C\u5712\u3067\u65B0\u6B53\u304A\u82B1\u898B\u3092\u3057\u307E\u3059\u3002\u307E\u305A\u306F\u6C17\u8EFD\u306B\u3069\u3093\u306A\u96F0\u56F2\u6C17\u306E\u30E1\u30F3\u30D0\u30FC\u304C\u3044\u308B\u306E\u304B\u898B\u306B\u6765\u3066\u307F\u3066\u304F\u3060\u3055\u3044\u3002'
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'css-section' },
+	              _react2.default.createElement(
+	                'h3',
+	                null,
+	                '\u4F53\u9A13\u52C9\u5F37\u4F1A'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'css-description' },
+	                _react2.default.createElement(
+	                  'p',
+	                  null,
+	                  '4\u6708\u306B\u65B0\u5165\u751F\u304C\u4F53\u9A13\u53C2\u52A0\u3067\u304D\u308B\u52C9\u5F37\u4F1A\u3092\u958B\u50AC\u3057\u307E\u3059\u3002'
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'css-section' },
+	              _react2.default.createElement(
+	                'h3',
+	                null,
+	                '\u5B66\u554F\u76F8\u8AC7\u4F1A'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'css-description' },
+	                _react2.default.createElement(
+	                  'p',
+	                  null,
+	                  '\u73FE\u6642\u70B9\u3067\u95A2\u5FC3\u306E\u3042\u308B\u5B66\u554F\u5206\u91CE\u3084\u793E\u4F1A\u554F\u984C\u306B\u3064\u3044\u3066\u805E\u304D\u306A\u304C\u3089\u3001\u5927\u5B66\u751F\u6D3B4\u5E74\u9593\u306E\u52C9\u5F37\u3084\u6D3B\u52D5\u306E\u8A08\u753B\u306B\u3064\u3044\u3066\u5148\u8F29\u304C\u76F8\u8AC7\u306B\u4E57\u308A\u307E\u3059\u3002\u305D\u306E\u4E2D\u3067Cloud.A\u4F1A\u54E1\u306B\u8FD1\u3044\u30C6\u30FC\u30DE\u3092\u6301\u3064\u30E1\u30F3\u30D0\u30FC\u3084\u30D7\u30ED\u30B8\u30A7\u30AF\u30C8\u304C\u3042\u308C\u3070\u7D39\u4ECB\u3057\u307E\u3059\u3002'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  null,
+	                  '\u5B66\u554F\u3084\u793E\u4F1A\u554F\u984C\u306B\u8A73\u3057\u3044\u5148\u8F29\u3068\u8A71\u3057\u306A\u304C\u30894\u5E74\u9593\u306E\u8A08\u753B\u3092\u7ACB\u3066\u308B\u3060\u3051\u3067\u3082\u975E\u5E38\u306B\u5F79\u7ACB\u3064\u306E\u3067\u3001Cloud.A\u3078\u306E\u53C2\u52A0\u3092\u307E\u3060\u8FF7\u3063\u3066\u3044\u308B\u65B9\u3067\u3082\u6C17\u8EFD\u306B\u53C2\u52A0\u3057\u3066\u5927\u4E08\u592B\u3067\u3059\uFF01'
+	                )
+	              )
+	            )
+	          );
+	          break;
+	        case 'pr':
+	          return _react2.default.createElement(
+	            'div',
+	            { className: 'css-main-content' },
+	            _react2.default.createElement(
+	              'h2',
+	              null,
+	              '\u5E83\u5831\u30FB\u4F01\u753B\u90E8'
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'css-section' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'css-description' },
+	                _react2.default.createElement(
+	                  'p',
+	                  null,
+	                  '\u5E83\u5831\u30FB\u4F01\u753B\u90E8\u306F\u3001\u6700\u65B0\u306E\u30DE\u30FC\u30B1\u30C6\u30A3\u30F3\u30B0\u624B\u6CD5\u3092\u6D3B\u7528\u3057\u305F\u52C9\u5F37\u4F1A\u306E\u544A\u77E5\u30FB\u96C6\u5BA2\u3084\u3001Cloud.A\u5185\u306E\u4EA4\u6D41\u4F1A\u30A4\u30D9\u30F3\u30C8\u306E\u4F01\u753B\u3092\u62C5\u5F53\u3057\u307E\u3059\u3002'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  null,
+	                  '\u5E83\u5831\u6D3B\u52D5\u3067\u306FWeb\u30DE\u30FC\u30B1\u30C6\u30A3\u30F3\u30B0\u65BD\u7B56\u306E\u4ED6\u306B\u3001\u5B66\u751F\u56E3\u4F53\u304C\u958B\u50AC\u3059\u308B\u52C9\u5F37\u4F1A\u3084\u4EA4\u6D41\u4F1A\u306A\u3069\u306B\u7A4D\u6975\u7684\u306B\u53C2\u52A0\u3057\u3066\u6D3B\u52D5\u3092\u5BA3\u4F1D\u3059\u308B\u305F\u3081\u3001\u5E83\u3044\u4EBA\u8108\u3092\u7BC9\u304F\u3053\u3068\u304C\u3067\u304D\u307E\u3059\u3002'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  null,
+	                  '\u4F01\u753B\u904B\u55B6\u3067\u306F\u3001\u98F2\u307F\u4F1A\u3084\u304A\u597D\u307F\u713C\u304D\u4F1A\u3060\u3051\u3067\u306A\u304F\u3001\u304A\u82B1\u898B\u3084\u30D0\u30FC\u30D9\u30AD\u30E5\u30FC\u3001\u30B9\u30AD\u30FC\u5408\u5BBF\u3068\u3044\u3063\u305F\u5927\u304D\u306A\u30A4\u30D9\u30F3\u30C8\u3092\u4F01\u753B\u3057\u3066\u3001\u5DE5\u592B\u3057\u306A\u304C\u3089\u904B\u55B6\u3059\u308B\u3053\u3068\u304C\u3067\u304D\u308B\u305F\u3081\u3001\u4F01\u753B\u5B9F\u884C\u529B\u304C\u8EAB\u306B\u3064\u304D\u307E\u3059\u3002'
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'css-section' },
+	              _react2.default.createElement(
+	                'h3',
+	                null,
+	                '\u4ED5\u4E8B\u5185\u5BB9'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'css-description' },
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  '\u52C9\u5F37\u4F1A\u306E\u544A\u77E5\u30FB\u96C6\u5BA2'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  '\u65B0\u898F\u4F1A\u54E1\u306E\u52DF\u96C6'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  '\u4EA4\u6D41\u4F1A\u30A4\u30D9\u30F3\u30C8\u306E\u7ACB\u6848\u30FB\u904B\u55B6'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  '\u30DE\u30FC\u30B1\u30C6\u30A3\u30F3\u30B0\u7814\u7A76\u4F1A\u306E\u904B\u55B6'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  'SNS\u30A2\u30AB\u30A6\u30F3\u30C8\u306E\u7BA1\u7406'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  '\u30DB\u30FC\u30E0\u30DA\u30FC\u30B8\u306E\u66F4\u65B0'
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'css-section' },
+	              _react2.default.createElement(
+	                'h3',
+	                null,
+	                '\u8EAB\u306B\u3064\u304F\u80FD\u529B'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'css-description' },
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  '\u30BF\u30B9\u30AF\u7BA1\u7406\u30FB\u30DE\u30CD\u30B8\u30E1\u30F3\u30C8\u30B9\u30AD\u30EB'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  '\u4F01\u753B\u7ACB\u6848\u30FB\u904B\u55B6\u30B9\u30AD\u30EB'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  '\u30A2\u30A4\u30C7\u30A2\u3092\u8003\u3048\u3001\u5B9F\u73FE\u3059\u308B\u30B9\u30AD\u30EB'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  'Web\u30DE\u30FC\u30B1\u30C6\u30A3\u30F3\u30B0\u306E\u30B9\u30AD\u30EB'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  '\u57FA\u672C\u7684\u306AWord\u30FBExcel\u30B9\u30AD\u30EB'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  'Web\u30B5\u30A4\u30C8\u7BA1\u7406\u306E\u30B9\u30AD\u30EB'
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'css-section' },
+	              _react2.default.createElement(
+	                'h3',
+	                null,
+	                '\u3053\u3093\u306A\u4EBA\u306B\u30AA\u30B9\u30B9\u30E1'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'css-description' },
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  '\u5E83\u5831\u3084\u30DE\u30FC\u30B1\u30C6\u30A3\u30F3\u30B0\u306B\u8208\u5473\u304C\u3042\u308B'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  '\u76F8\u624B\u306E\u30CB\u30FC\u30BA\u3092\u60F3\u50CF\u3057\u306A\u304C\u3089\u3001\u5FC3\u306B\u97FF\u304F\u30E1\u30C3\u30BB\u30FC\u30B8\u3092\u8003\u3048\u308B\u306E\u304C\u597D\u304D'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  '\u5927\u5B66\u751F\u6D3B\u3092\u901A\u3057\u3066\u5E83\u3044\u4EBA\u8108\u3092\u7BC9\u304D\u305F\u3044'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  '\u307F\u3093\u306A\u304C\u697D\u3057\u3081\u308B\u4F01\u753B\u3084\u30A4\u30D9\u30F3\u30C8\u3092\u4F5C\u308B\u306E\u304C\u597D\u304D'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  'HTML\u3084\u30DB\u30FC\u30E0\u30DA\u30FC\u30B8\u7BA1\u7406\u30C4\u30FC\u30EB\u306B\u89E6\u308C\u305F\u3053\u3068\u304C\u3042\u308B'
+	                )
+	              )
+	            )
+	          );
+	          break;
+	        case 'academic':
+	          return _react2.default.createElement(
+	            'div',
+	            { className: 'css-main-content' },
+	            _react2.default.createElement(
+	              'h2',
+	              null,
+	              '\u5B66\u8853\u7D71\u62EC\u90E8'
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'css-section' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'css-description' },
+	                _react2.default.createElement(
+	                  'p',
+	                  null,
+	                  '\u5B66\u8853\u7D71\u62EC\u90E8\u306F\u3001\u52C9\u5F37\u4F1A\u306E\u767A\u8868\u8005\u306B\u521D\u3081\u3066\u6311\u6226\u3059\u308B\u4EBA\u5411\u3051\u306B\u3001\u767A\u8868\u30C6\u30FC\u30DE\u306E\u9078\u5B9A\u3084\u30EA\u30B5\u30FC\u30C1\u3001\u30D7\u30EC\u30BC\u30F3\u30C6\u30FC\u30B7\u30E7\u30F3\u306E\u69CB\u6210\u306A\u3069\u3092\u7DCF\u5408\u7684\u306B\u30B5\u30DD\u30FC\u30C8\u3057\u307E\u3059\u3002'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  null,
+	                  '\u4E3B\u306B\u52C9\u5F37\u4F1A\u3067\u306E\u767A\u8868\u7D4C\u9A13\u3092\u7A4D\u3093\u3060\u4E0A\u7D1A\u751F\u304C\u62C5\u5F53\u3057\u307E\u3059\u3002'
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'css-section' },
+	              _react2.default.createElement(
+	                'h3',
+	                null,
+	                '\u4ED5\u4E8B\u5185\u5BB9'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'css-description' },
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  '\u767A\u8868\u5E0C\u671B\u8005\u3068\u30C6\u30FC\u30DE\u306E\u76F8\u8AC7'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  '\u767A\u8868\u5185\u5BB9\u306E\u69CB\u6210\u30FB\u6574\u7406'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  '\u30EA\u30B5\u30FC\u30C1\u306E\u88DC\u52A9'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  '\u30C7\u30A3\u30B9\u30AB\u30C3\u30B7\u30E7\u30F3\u306E\u8A2D\u8A08'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  '\u30D7\u30EC\u30BC\u30F3\u4F5C\u6210\u306E\u30B5\u30DD\u30FC\u30C8'
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'css-section' },
+	              _react2.default.createElement(
+	                'h3',
+	                null,
+	                '\u8EAB\u306B\u3064\u304F\u80FD\u529B'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'css-description' },
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  '\u5E83\u7BC4\u306A\u5B66\u8853\u5206\u91CE\u306E\u57FA\u790E\u77E5\u8B58'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  '\u8AD6\u7406\u7684\u306B\u767A\u8868\u3092\u69CB\u6210\u3059\u308B\u30B9\u30AD\u30EB'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  '\u6839\u62E0\u306B\u57FA\u3065\u3044\u3066\u7D50\u8AD6\u3092\u5C0E\u304F\u30B9\u30AD\u30EB'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  '\u5B66\u8853\u7684\u306A\u30EA\u30B5\u30FC\u30C1\u306E\u30B9\u30AD\u30EB'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  '\u76F8\u624B\u306B\u5206\u304B\u308A\u3084\u3059\u304F\u8AAC\u660E\u3059\u308B\u30B9\u30AD\u30EB'
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'css-section' },
+	              _react2.default.createElement(
+	                'h3',
+	                null,
+	                '\u3053\u3093\u306A\u4EBA\u306B\u30AA\u30B9\u30B9\u30E1'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'css-description' },
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  '\u81EA\u5206\u306E\u5C02\u9580\u5206\u91CE\u3060\u3051\u3067\u306A\u304F\u3001\u3069\u3093\u306A\u5206\u91CE\u3067\u3082\u901A\u3058\u308B\u8AD6\u7406\u7684\u601D\u8003\u529B\u3084\u30A8\u30D3\u30C7\u30F3\u30B9\u30D9\u30FC\u30B9\u30C8\u306A\u69CB\u6210\u529B\u3092\u8EAB\u306B\u3064\u3051\u305F\u3044'
+	                )
+	              )
+	            )
+	          );
+	          break;
+	        case 'project':
+	          return _react2.default.createElement(
+	            'div',
+	            { className: 'css-main-content' },
+	            _react2.default.createElement(
+	              'h2',
+	              null,
+	              '\u30D7\u30ED\u30B8\u30A7\u30AF\u30C8\u7D71\u62EC\u90E8'
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'css-section' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'css-description' },
+	                _react2.default.createElement(
+	                  'p',
+	                  null,
+	                  '\u30D7\u30ED\u30B8\u30A7\u30AF\u30C8\u7D71\u62EC\u90E8\u306F\u3001Cloud.A\u5185\u3067\u52D5\u3044\u3066\u3044\u308B\u5404\u30D7\u30ED\u30B8\u30A7\u30AF\u30C8\u306E\u9032\u6357\u3084\u8AB2\u984C\u3092\u628A\u63E1\u3057\u3001\u30C1\u30FC\u30E0\u9593\u3067\u30CE\u30A6\u30CF\u30A6\u306E\u5171\u6709\u3084\u5354\u529B\u3067\u304D\u308B\u30DD\u30A4\u30F3\u30C8\u306E\u8ABF\u6574\u3092\u884C\u3044\u307E\u3059\u3002'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  null,
+	                  '\u307E\u305F\u30D7\u30ED\u30B8\u30A7\u30AF\u30C8\u53C2\u52A0\u8005\u5411\u3051\u306B\u3001\u30D7\u30ED\u30B8\u30A7\u30AF\u30C8\u30DE\u30CD\u30B8\u30E1\u30F3\u30C8\u3084\u30D7\u30EC\u30BC\u30F3\u30C6\u30FC\u30B7\u30E7\u30F3\u3001\u30ED\u30B8\u30AB\u30EB\u30B7\u30F3\u30AD\u30F3\u30B0\u3084\u30DE\u30FC\u30B1\u30C6\u30A3\u30F3\u30B0\u7B49\u306E\u30B9\u30AD\u30EB\u7814\u4FEE\u3092\u4F01\u753B\u3057\u3001\u5B9F\u65BD\u3057\u307E\u3059\u3002'
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'css-section' },
+	              _react2.default.createElement(
+	                'h3',
+	                null,
+	                '\u4ED5\u4E8B\u5185\u5BB9'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'css-description' },
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  '\u30D7\u30ED\u30B8\u30A7\u30AF\u30C8\u5B9A\u4F8B\u4F1A\u306E\u904B\u55B6'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  '\u30E1\u30F3\u30D0\u30FC\u7814\u4FEE\u306E\u5B9F\u65BD'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  '\u65B0\u898F\u30D7\u30ED\u30B8\u30A7\u30AF\u30C8\u7ACB\u3061\u4E0A\u3052\u306E\u652F\u63F4'
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'css-section' },
+	              _react2.default.createElement(
+	                'h3',
+	                null,
+	                '\u8EAB\u306B\u3064\u304F\u80FD\u529B'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'css-description' },
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  '\u30DE\u30CD\u30B8\u30E1\u30F3\u30C8\u3084\u30DE\u30FC\u30B1\u30C6\u30A3\u30F3\u30B0\u306E\u30B9\u30AD\u30EB'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  '\u4F1A\u8B70\u4F53\u306E\u52B9\u7387\u7684\u306A\u904B\u55B6\u3084\u6C7A\u5B9A\u30D7\u30ED\u30BB\u30B9\u7BA1\u7406\u306E\u30B9\u30AD\u30EB'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  '\u30D7\u30ED\u30B8\u30A7\u30AF\u30C8\u7D4C\u55B6\u306E\u4FEF\u77B0\u7684\u306A\u628A\u63E1\u3068\u65B9\u91DD\u7B56\u5B9A\u306E\u30B9\u30AD\u30EB'
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'css-section' },
+	              _react2.default.createElement(
+	                'h3',
+	                null,
+	                '\u3053\u3093\u306A\u4EBA\u306B\u30AA\u30B9\u30B9\u30E1'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'css-description' },
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  '\u30D7\u30ED\u30B8\u30A7\u30AF\u30C8\u7BA1\u7406\u3084\u30DE\u30FC\u30B1\u30C6\u30A3\u30F3\u30B0\u306B\u8208\u5473\u304C\u3042\u308B'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  '\u5206\u91CE\u306B\u95A2\u308F\u3089\u305A\u793E\u4F1A\u554F\u984C\u306E\u89E3\u6C7A\u306B\u53D6\u308A\u7D44\u3080\u30EA\u30FC\u30C0\u30FC\u305F\u3061\u3092\u30B5\u30DD\u30FC\u30C8\u3057\u305F\u3044'
+	                )
+	              )
+	            )
+	          );
+	          break;
+	        case 'presenter':
+	          return _react2.default.createElement(
+	            'div',
+	            { className: 'css-main-content' },
+	            _react2.default.createElement(
+	              'h2',
+	              null,
+	              '\u767A\u8868\u8005'
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'css-section' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'css-description' },
+	                _react2.default.createElement(
+	                  'p',
+	                  null,
+	                  '\u81EA\u5206\u306E\u8208\u5473\u306E\u3042\u308B\u793E\u4F1A\u554F\u984C\u306B\u3064\u3044\u3066\u8ABF\u3079\u3001\u4F1A\u54E1\u304C\u53C2\u52A0\u3059\u308B\u52C9\u5F37\u4F1A\u3067\u767A\u8868\u3057\u307E\u3059\u3002\u307E\u305F\u3001\u81EA\u5206\u304C\u611F\u3058\u3066\u3044\u308B\u8AB2\u984C\u610F\u8B58\u306B\u3064\u3044\u3066\u30C7\u30A3\u30B9\u30AB\u30C3\u30B7\u30E7\u30F3\u30C6\u30FC\u30DE\u3092\u8A2D\u5B9A\u3057\u3001\u591A\u304F\u306E\u53C2\u52A0\u8005\u3068\u5171\u306B\u8003\u3048\u3001\u8B70\u8AD6\u3067\u304D\u307E\u3059\u3002'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  null,
+	                  '\u521D\u3081\u3066\u6311\u6226\u3059\u308B\u5834\u5408\u306F\u5B66\u8853\u7D71\u62EC\u90E8\u304C\u30C6\u30FC\u30DE\u306E\u9078\u5B9A\u304B\u3089\u30EA\u30B5\u30FC\u30C1\u65B9\u6CD5\u3001\u30D7\u30EC\u30BC\u30F3\u30C6\u30FC\u30B7\u30E7\u30F3\u306E\u69CB\u6210\u306A\u3069\u7DCF\u5408\u7684\u306B\u30B5\u30DD\u30FC\u30C8\u3059\u308B\u306E\u3067\u3001\u5B66\u751F\u751F\u6D3B\u3067\u6700\u521D\u306B\u6311\u6226\u3059\u308B\u767B\u7ADC\u9580\u3068\u3057\u3066\u6700\u9069\u3067\u3059\u3002'
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'css-section' },
+	              _react2.default.createElement(
+	                'h3',
+	                null,
+	                '\u8EAB\u306B\u3064\u304F\u80FD\u529B'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'css-description' },
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  '\u95A2\u5FC3\u306E\u3042\u308B\u5B66\u554F\u5206\u91CE\u3084\u793E\u4F1A\u554F\u984C\u306B\u3064\u3044\u3066\u306E\u77E5\u8B58\u30FB\u5206\u6790\u80FD\u529B'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  '\u5206\u304B\u308A\u3084\u3059\u304F\u4F1D\u3048\u308B\u305F\u3081\u306E\u30D7\u30EC\u30BC\u30F3\u30C6\u30FC\u30B7\u30E7\u30F3\u80FD\u529B'
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'css-section' },
+	              _react2.default.createElement(
+	                'h3',
+	                null,
+	                '\u3053\u3093\u306A\u4EBA\u306B\u30AA\u30B9\u30B9\u30E1'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'css-description' },
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  '\u4F55\u3068\u306A\u304F\u95A2\u5FC3\u304C\u3042\u308B\u793E\u4F1A\u554F\u984C\u304C\u3042\u308B'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  '\u52C9\u5F37\u3057\u3066\u307F\u305F\u3044\u5B66\u554F\u5206\u91CE\u304C\u3042\u308B'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  '\u8AB0\u304B\u306B\u4F1D\u3048\u305F\u3044\u3001\u4E00\u7DD2\u306B\u8003\u3048\u305F\u3044\u554F\u984C\u304C\u3042\u308B'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  '\u4EBA\u524D\u3067\u81EA\u5206\u306E\u8003\u3048\u3092\u767A\u4FE1\u3059\u308B\u7DF4\u7FD2\u3092\u3057\u3066\u307F\u305F\u3044'
+	                )
+	              )
+	            )
+	          );
+	          break;
+	        case 'participant':
+	          return _react2.default.createElement(
+	            'div',
+	            { className: 'css-main-content' },
+	            _react2.default.createElement(
+	              'h2',
+	              null,
+	              '\u53C2\u52A0\u8005'
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'css-section' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'css-description' },
+	                _react2.default.createElement(
+	                  'p',
+	                  null,
+	                  'Cloud.A\u3067\u306F\u6708\u306B1\u5EA6\u7A0B\u5EA6\u3001\u5B66\u554F\u3084\u793E\u4F1A\u554F\u984C\u306B\u95A2\u3059\u308B\u52C9\u5F37\u4F1A\u3092\u958B\u50AC\u3057\u3066\u3044\u307E\u3059\u3002\u53C2\u52A0\u306F\u81EA\u7531\u3068\u306A\u3063\u3066\u304A\u308A\u3001\u305D\u306E\u56DE\u306E\u30C6\u30FC\u30DE\u306B\u95A2\u5FC3\u304C\u3042\u308C\u3070\u53C2\u52A0\u3057\u307E\u3059\u3002'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  null,
+	                  '\u30B0\u30EB\u30FC\u30D7\u306B\u52A0\u5165\u3057\u3066\u3044\u308C\u3070\u52C9\u5F37\u4F1A\u958B\u50AC\u306E\u9023\u7D61\u304C\u5C4A\u304F\u306E\u3067\u3001\u305D\u308C\u3092\u898B\u3066\u53C2\u52A0\u306E\u53EF\u5426\u3092\u9023\u7D61\u3067\u304D\u307E\u3059\u3002'
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'css-section' },
+	              _react2.default.createElement(
+	                'h3',
+	                null,
+	                '\u3053\u3093\u306A\u4EBA\u306B\u30AA\u30B9\u30B9\u30E1'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'css-description' },
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  '\u69D8\u3005\u306A\u95A2\u5FC3\u3084\u5C02\u653B\u306E\u4EBA\u3068\u4EA4\u6D41\u3057\u305F\u3044'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  '\u5B66\u8853\u3084\u793E\u4F1A\u554F\u984C\u306B\u3064\u3044\u3066\u8B70\u8AD6\u3057\u305F\u3044'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  '\u81EA\u5206\u306E\u5C02\u9580\u5206\u91CE\u3060\u3051\u3067\u306A\u304F\u3001\u5E83\u304F\u6559\u990A\u3092\u57F9\u3044\u305F\u3044'
+	                )
+	              )
+	            )
+	          );
+	          break;
+	        case 'joinProject':
+	          return _react2.default.createElement(
+	            'div',
+	            { className: 'css-main-content' },
+	            _react2.default.createElement(
+	              'h2',
+	              null,
+	              '\u65E2\u5B58\u30D7\u30ED\u30B8\u30A7\u30AF\u30C8'
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'css-section' },
+	              _react2.default.createElement(
+	                'h3',
+	                null,
+	                'MatchLab'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'css-description' },
+	                _react2.default.createElement(
+	                  'p',
+	                  null,
+	                  'MatchLab\u306F\u3001\u5C11\u5B50\u5316\u3084\u672A\u5A5A\u7387\u306E\u4E0A\u6607\u3001\u7279\u306B\u9AD8\u5B66\u6B74\u306E\u82E5\u8005\u306B\u591A\u3044\u300C\u5FD9\u3057\u304F\u3066\u51FA\u4F1A\u3044\u304C\u7121\u304F\u3001\u7D50\u5A5A\u3067\u304D\u306A\u3044\u300D\u3068\u3044\u3046\u554F\u984C\u306B\u5BFE\u3057\u3066\u7ACB\u3061\u4E0A\u3052\u3089\u308C\u305F\u30D7\u30ED\u30B8\u30A7\u30AF\u30C8\u3067\u3059\u3002\u9AD8\u5B66\u6B74\u8005\u5411\u3051\u306E\u30DE\u30C3\u30C1\u30F3\u30B0\u30B5\u30FC\u30D3\u30B9\u3092\u958B\u767A\u30FB\u904B\u55B6\u3059\u308B\u4ED6\u3001\u5B9F\u969B\u306B\u7570\u6027\u3068\u4F1A\u3046\u3053\u3068\u304C\u3067\u304D\u308B\u30EA\u30A2\u30EB\u30A4\u30D9\u30F3\u30C8\u3092\u958B\u50AC\u3057\u3066\u3044\u307E\u3059\u3002'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  null,
+	                  '\u3053\u306E\u30D7\u30ED\u30B8\u30A7\u30AF\u30C8\u3067\u306F\u73FE\u5728\u3001\u30DE\u30FC\u30B1\u30C6\u30A3\u30F3\u30B0\u30DD\u30B8\u30B7\u30E7\u30F3\u3092\u52DF\u96C6\u3057\u3066\u3044\u307E\u3059\u3002'
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'css-section' },
+	              _react2.default.createElement(
+	                'h3',
+	                null,
+	                'LifeWatch'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'css-description' },
+	                _react2.default.createElement(
+	                  'p',
+	                  null,
+	                  'LifeWatch\u306F2015\u5E7412\u6708\u306E\u96FB\u901A\u306E\u904E\u52B4\u81EA\u6BBA\u4E8B\u4EF6\u3092\u53D7\u3051\u3001\u9577\u6642\u9593\u52B4\u50CD\u3068\u30E1\u30F3\u30BF\u30EB\u30D8\u30EB\u30B9\u554F\u984C\u306B\u7126\u70B9\u3092\u5F53\u3066\u3066\u7ACB\u3061\u4E0A\u3052\u3089\u308C\u305F\u30D7\u30ED\u30B8\u30A7\u30AF\u30C8\u3067\u3059\u3002\u52B4\u50CD\u6642\u9593\u306E\u8A18\u9332\u30FB\u7BA1\u7406\u30A2\u30D7\u30EA\u3092\u958B\u767A\u30FB\u904B\u55B6\u3057\u3001\u696D\u754C\u30FB\u4F01\u696D\u5225\u306E\u52B4\u50CD\u6642\u9593\u30C7\u30FC\u30BF\u306E\u53CE\u96C6\u3084\u50CD\u304F\u4EBA\u306E\u58F0\u3092\u50BE\u8074\u3059\u308B\u30B5\u30FC\u30D3\u30B9\u3092\u63D0\u4F9B\u3057\u3066\u3044\u307E\u3059\u3002'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  null,
+	                  '\u3053\u306E\u30D7\u30ED\u30B8\u30A7\u30AF\u30C8\u3067\u306F\u73FE\u5728\u3001\u30A8\u30F3\u30B8\u30CB\u30A2\u30FB\u30DE\u30FC\u30B1\u30C6\u30A3\u30F3\u30B0\u30DD\u30B8\u30B7\u30E7\u30F3\u3092\u52DF\u96C6\u3057\u3066\u3044\u307E\u3059\u3002'
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'css-section' },
+	              _react2.default.createElement(
+	                'h3',
+	                null,
+	                'Clue'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'css-description' },
+	                _react2.default.createElement(
+	                  'p',
+	                  null,
+	                  'Clue\u306F\u4E0D\u767B\u6821\u5150\u306E\u81EA\u6BBA\u3084\u30AD\u30E3\u30EA\u30A2\u306E\u554F\u984C\u3092\u89E3\u6C7A\u3059\u308B\u305F\u3081\u3001',
+	                  _react2.default.createElement(
+	                    'a',
+	                    { href: 'http://piaport.jp/', target: '_blank' },
+	                    '\u682A\u5F0F\u4F1A\u793EMarianne'
+	                  ),
+	                  '\u3068\u63D0\u643A\u3057\u3066\u958B\u767A\u3057\u305F\u30B5\u30FC\u30D3\u30B9\u3067\u3059\u3002'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  null,
+	                  '\u3053\u306E\u30D7\u30ED\u30B8\u30A7\u30AF\u30C8\u3067\u306F\u73FE\u5728\u3001\u30A8\u30F3\u30B8\u30CB\u30A2\u30FB\u30DE\u30FC\u30B1\u30C6\u30A3\u30F3\u30B0\u30DD\u30B8\u30B7\u30E7\u30F3\u3092\u52DF\u96C6\u3057\u3066\u3044\u307E\u3059\u3002'
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'css-section' },
+	              _react2.default.createElement(
+	                'h3',
+	                null,
+	                '\u5F97\u3089\u308C\u308B\u7D4C\u9A13'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'css-description' },
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  '\u5BFE\u8C61\u3068\u3059\u308B\u793E\u4F1A\u554F\u984C\u306B\u5BFE\u3059\u308B\u6DF1\u3044\u898B\u8B58'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  '\u554F\u984C\u3092\u89E3\u6C7A\u3059\u308B\u305F\u3081\u306E\u5177\u4F53\u7684\u306A\u884C\u52D5\u7D4C\u9A13'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  '\u30C1\u30FC\u30E0\u3067\u5354\u529B\u3057\u306A\u304C\u3089\u30D7\u30ED\u30B8\u30A7\u30AF\u30C8\u3092\u63A8\u9032\u3059\u308B\u7D4C\u9A13'
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'css-section' },
+	              _react2.default.createElement(
+	                'h3',
+	                null,
+	                '\u3053\u3093\u306A\u4EBA\u306B\u30AA\u30B9\u30B9\u30E1'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'css-description' },
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  '\u30D7\u30ED\u30B8\u30A7\u30AF\u30C8\u304C\u5BFE\u8C61\u3068\u3059\u308B\u793E\u4F1A\u554F\u984C\u306B\u8208\u5473\u304C\u3042\u308B'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  '\u793E\u4F1A\u554F\u984C\u3092\u89E3\u6C7A\u3059\u308B\u305F\u3081\u306B\u5177\u4F53\u7684\u306A\u30A2\u30AF\u30B7\u30E7\u30F3\u3092\u5B9F\u884C\u3057\u305F\u3044'
+	                )
+	              )
+	            )
+	          );
+	          break;
+	        case 'newProject':
+	          return _react2.default.createElement(
+	            'div',
+	            { className: 'css-main-content' },
+	            _react2.default.createElement(
+	              'h2',
+	              null,
+	              '\u65B0\u898F\u30D7\u30ED\u30B8\u30A7\u30AF\u30C8'
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'css-section' },
+	              _react2.default.createElement(
+	                'h3',
+	                null,
+	                '\u7ACB\u3061\u4E0A\u3052\u65B9\u6CD5'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'css-description' },
+	                _react2.default.createElement(
+	                  'p',
+	                  null,
+	                  'Cloud.A\u4F1A\u54E1\u5185\u3082\u3057\u304F\u306F\u81EA\u5206\u306E\u77E5\u308A\u5408\u3044\u304B\u3089\u30D7\u30ED\u30B8\u30A7\u30AF\u30C8\u306E\u30E1\u30F3\u30D0\u30FC\u3092\u96C6\u3081\u3001\u6700\u4F4E3\u540D\u306E\u30C1\u30FC\u30E0\u3092\u4F5C\u308A\u307E\u3059\u3002'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  null,
+	                  '\u5BFE\u8C61\u3068\u306A\u308B\u554F\u984C\u9818\u57DF\u3092\u5B9A\u7FA9\u3057\u3001\u539F\u56E0\u306E\u5206\u6790\u3068\u89E3\u6C7A\u7B56\u306E\u63D0\u6848\u3092\u307E\u3068\u3081\u3001\u30D7\u30ED\u30B8\u30A7\u30AF\u30C8\u5B9A\u4F8B\u4F1A\u306B\u63D0\u51FA\u3057\u307E\u3059\u3002'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  null,
+	                  '\u5206\u6790\u306E\u59A5\u5F53\u6027\u3068\u89E3\u6C7A\u7B56\u306E\u72EC\u81EA\u6027\u304C\u8A8D\u3081\u3089\u308C\u308C\u3070\u3001\u6B63\u5F0F\u306B\u30D7\u30ED\u30B8\u30A7\u30AF\u30C8\u3068\u3057\u3066\u627F\u8A8D\u3055\u308C\u3001\u6D3B\u52D5\u3092\u958B\u59CB\u3067\u304D\u307E\u3059\u3002'
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'css-section' },
+	              _react2.default.createElement(
+	                'h3',
+	                null,
+	                '\u8EAB\u306B\u3064\u304F\u80FD\u529B'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'css-description' },
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  '\u793E\u4F1A\u8AB2\u984C\u306E\u5206\u6790\u3068\u89E3\u6C7A\u7B56\u306E\u63D0\u6848\u30B9\u30AD\u30EB'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  '\u30C1\u30FC\u30E0\u3092\u727D\u5F15\u3059\u308B\u30EA\u30FC\u30C0\u30FC\u30B7\u30C3\u30D7'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  '\u30D7\u30ED\u30B8\u30A7\u30AF\u30C8\u30920\u304B\u3089\u4F5C\u308A\u4E0A\u3052\u308B\u7D4C\u9A13'
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'css-section' },
+	              _react2.default.createElement(
+	                'h3',
+	                null,
+	                '\u3053\u3093\u306A\u4EBA\u306B\u30AA\u30B9\u30B9\u30E1'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'css-description' },
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  '\u89E3\u6C7A\u3057\u305F\u3044\u793E\u4F1A\u554F\u984C\u304C\u3042\u308B'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'css-list' },
+	                  '\u8907\u6570\u4EBA\u3092\u307E\u3068\u3081\u3066\u30D7\u30ED\u30B8\u30A7\u30AF\u30C8\u3092\u30EA\u30FC\u30C9\u3059\u308B\u7D4C\u9A13\u304C\u307B\u3057\u3044'
+	                )
+	              )
+	            )
+	          );
+	          break;
+	        case 'default':
+	          return _react2.default.createElement(
+	            'div',
+	            { className: 'css-main-content' },
+	            _react2.default.createElement(
+	              'h2',
+	              null,
+	              '\u305D\u306E\u4ED6'
+	            )
+	          );
+	          break;
+	      }
+	    }
+	  }]);
+	
+	  return MainContent;
+	}(_react.Component);
+	
 	module.exports = Recruit;
 
 /***/ },
 /* 244 */
+/*!*************************************!*\
+  !*** ./app/views/in_preparation.js ***!
+  \*************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRouter = __webpack_require__(/*! react-router */ 179);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Header = __webpack_require__(/*! ./header.js */ 235);
+	
+	var InPreparation = function (_Component) {
+	  _inherits(InPreparation, _Component);
+	
+	  function InPreparation() {
+	    _classCallCheck(this, InPreparation);
+	
+	    return _possibleConstructorReturn(this, (InPreparation.__proto__ || Object.getPrototypeOf(InPreparation)).apply(this, arguments));
+	  }
+	
+	  _createClass(InPreparation, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { id: '404NotFound' },
+	        _react2.default.createElement(Header, null),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'css-404-error contentWrapper' },
+	          _react2.default.createElement(
+	            'h1',
+	            null,
+	            '\u6E96\u5099\u4E2D'
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            '\u7533\u3057\u8A33\u3042\u308A\u307E\u305B\u3093\u3002\u3053\u3061\u3089\u306E\u30DA\u30FC\u30B8\u306F\u6E96\u5099\u4E2D\u3067\u3059\u3002'
+	          ),
+	          _react2.default.createElement(
+	            _reactRouter.Link,
+	            { to: '/' },
+	            'TOP\u306B\u623B\u308B'
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return InPreparation;
+	}(_react.Component);
+	
+	module.exports = InPreparation;
+
+/***/ },
+/* 245 */
 /*!********************************!*\
   !*** ./app/views/not_found.js ***!
   \********************************/
@@ -29157,84 +30197,13 @@
 	module.exports = NotFound;
 
 /***/ },
-/* 245 */
+/* 246 */
 /*!**********************!*\
   !*** ./app/app.scss ***!
   \**********************/
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 246 */
-/*!*************************************!*\
-  !*** ./app/views/in_preparation.js ***!
-  \*************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactRouter = __webpack_require__(/*! react-router */ 179);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var Header = __webpack_require__(/*! ./header.js */ 235);
-	
-	var InPreparation = function (_Component) {
-	  _inherits(InPreparation, _Component);
-	
-	  function InPreparation() {
-	    _classCallCheck(this, InPreparation);
-	
-	    return _possibleConstructorReturn(this, (InPreparation.__proto__ || Object.getPrototypeOf(InPreparation)).apply(this, arguments));
-	  }
-	
-	  _createClass(InPreparation, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        { id: '404NotFound' },
-	        _react2.default.createElement(Header, null),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'css-404-error contentWrapper' },
-	          _react2.default.createElement(
-	            'h1',
-	            null,
-	            '\u6E96\u5099\u4E2D'
-	          ),
-	          _react2.default.createElement(
-	            'p',
-	            null,
-	            '\u7533\u3057\u8A33\u3042\u308A\u307E\u305B\u3093\u3002\u3053\u3061\u3089\u306E\u30DA\u30FC\u30B8\u306F\u6E96\u5099\u4E2D\u3067\u3059\u3002'
-	          ),
-	          _react2.default.createElement(
-	            _reactRouter.Link,
-	            { to: '/' },
-	            'TOP\u306B\u623B\u308B'
-	          )
-	        )
-	      );
-	    }
-	  }]);
-	
-	  return InPreparation;
-	}(_react.Component);
-	
-	module.exports = InPreparation;
 
 /***/ }
 /******/ ]);

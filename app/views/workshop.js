@@ -58,6 +58,13 @@ class ThemeList extends Component {
           <div className="css-ws-content">
             <p className="css-date"><span className="css-number">{theme.id}</span> {theme.date}</p>
             <h3>{theme.title}</h3>
+            {(()=>{
+              if(theme.doc){
+                return(
+                  <a href={theme.doc} target="_blank" className="css-link-btn">{(theme.doc.indexOf('docs.google.com') == -1) ? '報告資料' : '発表資料'}</a>
+                );
+              }
+            })()}
           </div>
           <div className="clear"></div>
         </div>
