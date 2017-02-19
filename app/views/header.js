@@ -131,9 +131,9 @@ class Header extends Component {
                               </Link>
                             </li>
                             <li className="css-menu-child">
-                              <Link to="/about/photos" className="css-link">
-                                <p className="css-title">Photo Gallary</p>
-                                <p className="css-description">活動風景</p>
+                              <Link to="/gallery" className="css-link">
+                                <p className="css-title">Gallery</p>
+                                <p className="css-description">資料集</p>
                               </Link>
                             </li>
                             <div className="clear"></div>

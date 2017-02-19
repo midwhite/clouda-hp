@@ -369,6 +369,72 @@
   .layout-3 .css-main-content {
     margin-left: 200px; } }
 
+.layout-4 .css-bg-shelf {
+  background-image: url("/image/bg/bookshelf.jpg");
+  background-size: cover;
+  background-position: center; }
+
+.layout-4 .css-wrapper {
+  min-height: 500px;
+  padding: 10px 0px; }
+  .layout-4 .css-wrapper h2 {
+    padding: 9px;
+    margin: 0px 10px 10px;
+    border: 1px solid #FFFFFF;
+    background: rgba(255, 255, 255, 0.7);
+    font-size: 30px; }
+  .layout-4 .css-wrapper .css-contents .css-content-wrapper {
+    width: 100%;
+    float: left; }
+    .layout-4 .css-wrapper .css-contents .css-content-wrapper .css-content {
+      height: 100px;
+      padding: 9px;
+      border: 1px solid #FFFFFF;
+      margin: 0px 10px 10px;
+      background: rgba(255, 255, 255, 0.7);
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+      overflow: hidden;
+      transition: all 300ms 0s ease; }
+      .layout-4 .css-wrapper .css-contents .css-content-wrapper .css-content:hover {
+        background: rgba(255, 255, 255, 0.8);
+        border: 1px solid #616161;
+        cursor: pointer; }
+
+.layout-4 .css-modal-wrapper {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 12; }
+  .layout-4 .css-modal-wrapper .css-modal {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    max-width: 600px;
+    margin: auto; }
+
+@media screen and (min-width: 1001px) {
+  .layout-4 .css-wrapper .css-contents .css-content-wrapper {
+    width: 20%; } }
+
+@media screen and (min-width: 701px) and (max-width: 1000px) {
+  .layout-4 .css-wrapper .css-contents .css-content-wrapper {
+    width: 25%; } }
+
+@media screen and (min-width: 501px) and (max-width: 700px) {
+  .layout-4 .css-wrapper .css-contents .css-content-wrapper {
+    width: 50%; } }
+
+@media screen and (max-width: 500px) {
+  .layout-4 .css-wrapper h2 {
+    margin: 0px 10px 10px; }
+  .layout-4 .css-wrapper .css-contents .css-content-wrapper .css-content {
+    margin: 10px; } }
+
 .css-404-error {
   padding: 40px 0px; }
   .css-404-error h1 {

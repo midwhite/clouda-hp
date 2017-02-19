@@ -6,7 +6,7 @@ const Vision   = require('./views/vision.js');
 const About    = require('./views/about.js');
 const Workshop = require('./views/workshop.js');
 const Projects = require('./views/projects.js');
-const Photos   = require('./views/photos.js');
+const Gallery  = require('./views/gallery.js');
 const Members  = require('./views/members.js');
 const Recruit  = require('./views/recruit.js');
 const Prepare  = require('./views/in_preparation.js');
@@ -22,7 +22,7 @@ export default class Application extends Component {
           <Route path="vision"         component={Vision} />
           <Route path="about/workshop" component={Workshop} />
           <Route path="about/projects" component={Projects} />
-          <Route path="about/photos"   component={Prepare} />
+          <Route path="gallery"        component={Gallery} />
           <Route path="members"        component={Members} />
           <Route path="recruit"        component={Recruit} />
           <Route path="*"              component={NoMatch} />

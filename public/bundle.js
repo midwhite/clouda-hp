@@ -22045,7 +22045,7 @@
 	var About = __webpack_require__(/*! ./views/about.js */ 238);
 	var Workshop = __webpack_require__(/*! ./views/workshop.js */ 239);
 	var Projects = __webpack_require__(/*! ./views/projects.js */ 240);
-	var Photos = __webpack_require__(/*! ./views/photos.js */ 241);
+	var Gallery = __webpack_require__(/*! ./views/gallery.js */ 247);
 	var Members = __webpack_require__(/*! ./views/members.js */ 242);
 	var Recruit = __webpack_require__(/*! ./views/recruit.js */ 243);
 	var Prepare = __webpack_require__(/*! ./views/in_preparation.js */ 244);
@@ -22074,7 +22074,7 @@
 	          _react2.default.createElement(_reactRouter.Route, { path: 'vision', component: Vision }),
 	          _react2.default.createElement(_reactRouter.Route, { path: 'about/workshop', component: Workshop }),
 	          _react2.default.createElement(_reactRouter.Route, { path: 'about/projects', component: Projects }),
-	          _react2.default.createElement(_reactRouter.Route, { path: 'about/photos', component: Prepare }),
+	          _react2.default.createElement(_reactRouter.Route, { path: 'gallery', component: Gallery }),
 	          _react2.default.createElement(_reactRouter.Route, { path: 'members', component: Members }),
 	          _react2.default.createElement(_reactRouter.Route, { path: 'recruit', component: Recruit }),
 	          _react2.default.createElement(_reactRouter.Route, { path: '*', component: NoMatch })
@@ -27509,16 +27509,16 @@
 	                          { className: 'css-menu-child' },
 	                          _react2.default.createElement(
 	                            _reactRouter.Link,
-	                            { to: '/about/photos', className: 'css-link' },
+	                            { to: '/gallery', className: 'css-link' },
 	                            _react2.default.createElement(
 	                              'p',
 	                              { className: 'css-title' },
-	                              'Photo Gallary'
+	                              'Gallery'
 	                            ),
 	                            _react2.default.createElement(
 	                              'p',
 	                              { className: 'css-description' },
-	                              '\u6D3B\u52D5\u98A8\u666F'
+	                              '\u8CC7\u6599\u96C6'
 	                            )
 	                          )
 	                        ),
@@ -28714,142 +28714,7 @@
 	module.exports = Projects;
 
 /***/ },
-/* 241 */
-/*!*****************************!*\
-  !*** ./app/views/photos.js ***!
-  \*****************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var Header = __webpack_require__(/*! ./header.js */ 235);
-	var Tool = __webpack_require__(/*! ./tool.js */ 236);
-	
-	var Photos = function (_Component) {
-	  _inherits(Photos, _Component);
-	
-	  function Photos() {
-	    _classCallCheck(this, Photos);
-	
-	    return _possibleConstructorReturn(this, (Photos.__proto__ || Object.getPrototypeOf(Photos)).apply(this, arguments));
-	  }
-	
-	  _createClass(Photos, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(Header, null),
-	        _react2.default.createElement(
-	          'section',
-	          { id: 'photos', className: 'contentWrapper layout-1' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'css-wrapper css-bg-vision-1' },
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'css-content' },
-	              _react2.default.createElement(
-	                'h2',
-	                null,
-	                '\u6D3B\u52D5\u98A8\u666F'
-	              ),
-	              _react2.default.createElement(
-	                'p',
-	                { className: 'css-title' },
-	                '\u30D3\u30B8\u30E7\u30F3\u3002\u30D3\u30B8\u30E7\u30F3\u3002\u30D3\u30B8\u30E7\u30F3\u3002'
-	              ),
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'css-description' },
-	                _react2.default.createElement(
-	                  'p',
-	                  null,
-	                  '\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002'
-	                )
-	              )
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'css-wrapper css-bg-vision-2' },
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'css-content' },
-	              _react2.default.createElement(
-	                'h2',
-	                null,
-	                '\u6D3B\u52D5\u98A8\u666F'
-	              ),
-	              _react2.default.createElement(
-	                'p',
-	                { className: 'css-title' },
-	                '\u30D3\u30B8\u30E7\u30F3\u3002\u30D3\u30B8\u30E7\u30F3\u3002\u30D3\u30B8\u30E7\u30F3\u3002'
-	              ),
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'css-description' },
-	                _react2.default.createElement(
-	                  'p',
-	                  null,
-	                  '\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002'
-	                )
-	              )
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'css-wrapper css-bg-vision-3' },
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'css-content' },
-	              _react2.default.createElement(
-	                'h2',
-	                null,
-	                '\u6D3B\u52D5\u98A8\u666F'
-	              ),
-	              _react2.default.createElement(
-	                'p',
-	                { className: 'css-title' },
-	                '\u30D3\u30B8\u30E7\u30F3\u3002\u30D3\u30B8\u30E7\u30F3\u3002\u30D3\u30B8\u30E7\u30F3\u3002'
-	              ),
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'css-description' },
-	                _react2.default.createElement(
-	                  'p',
-	                  null,
-	                  '\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002'
-	                )
-	              )
-	            )
-	          )
-	        )
-	      );
-	    }
-	  }]);
-	
-	  return Photos;
-	}(_react.Component);
-	
-	module.exports = Photos;
-
-/***/ },
+/* 241 */,
 /* 242 */
 /*!******************************!*\
   !*** ./app/views/members.js ***!
@@ -30402,6 +30267,150 @@
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 247 */
+/*!******************************!*\
+  !*** ./app/views/gallery.js ***!
+  \******************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Header = __webpack_require__(/*! ./header.js */ 235);
+	var Tool = __webpack_require__(/*! ./tool.js */ 236);
+	
+	var Gallery = function (_Component) {
+	  _inherits(Gallery, _Component);
+	
+	  function Gallery() {
+	    _classCallCheck(this, Gallery);
+	
+	    var _this = _possibleConstructorReturn(this, (Gallery.__proto__ || Object.getPrototypeOf(Gallery)).call(this));
+	
+	    _this.state = {
+	      docs: [],
+	      docId: null
+	    };
+	    return _this;
+	  }
+	
+	  _createClass(Gallery, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      this.setState({
+	        docs: Tool.ajax.get('/json/docs.json')
+	      });
+	    }
+	  }, {
+	    key: 'displayModal',
+	    value: function displayModal(id) {
+	      this.setState({
+	        docId: id
+	      });
+	    }
+	  }, {
+	    key: 'onClickModalWrapper',
+	    value: function onClickModalWrapper() {
+	      this.setState({
+	        docId: null
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+	
+	      var docsNodes = this.state.docs.map(function (doc) {
+	        return _react2.default.createElement(
+	          'div',
+	          { key: doc.id, className: 'css-content-wrapper' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'css-content', onClick: _this2.displayModal.bind(_this2, doc.id) },
+	            _react2.default.createElement(
+	              'p',
+	              null,
+	              '\u7B2C',
+	              doc.num,
+	              '\u56DE'
+	            ),
+	            _react2.default.createElement(
+	              'p',
+	              null,
+	              doc.title
+	            )
+	          )
+	        );
+	      });
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(Header, null),
+	        _react2.default.createElement(
+	          'section',
+	          { id: 'gallery', className: 'contentWrapper layout-4' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'css-wrapper css-bg-shelf' },
+	            _react2.default.createElement(
+	              'h2',
+	              null,
+	              '\u8CC7\u6599\u96C6'
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'css-contents' },
+	              function () {
+	                if (_this2.state.docs.length == 0) {
+	                  return _react2.default.createElement(
+	                    'div',
+	                    null,
+	                    'Now Loading...'
+	                  );
+	                } else {
+	                  return docsNodes;
+	                }
+	              }()
+	            ),
+	            _react2.default.createElement('div', { className: 'clear' })
+	          ),
+	          function () {
+	            if (_this2.state.docId) {
+	              return _react2.default.createElement(
+	                'div',
+	                { className: 'css-modal-wrapper', onClick: _this2.onClickModalWrapper.bind(_this2) },
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'css-modal', style: { height: window.screen.width > 600 ? 400 : window.screen.width * 3 / 4 } },
+	                  _react2.default.createElement('iframe', { src: "https://docs.google.com/presentation/d/" + _this2.state.docId + "/embed?start=false&loop=true", frameBorder: '0', width: window.screen.width > 600 ? "600px" : "100%", height: window.screen.width > 600 ? "400px" : window.screen.width * 3 / 4 + "px", allowFullScreen: 'true' })
+	                )
+	              );
+	            }
+	          }()
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return Gallery;
+	}(_react.Component);
+	
+	module.exports = Gallery;
 
 /***/ }
 /******/ ]);
