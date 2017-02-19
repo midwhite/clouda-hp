@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router';
+
 const Header = require('./header.js');
 const Tool = require('./tool.js');
 
@@ -34,13 +36,16 @@ class Recruit extends Component {
         <div id="recruit" className="contentWrapper">
           <div className="css-sidebar">
             <h2>新歓情報</h2>
-            <h3 onClick={this.openMenu.bind(this, 'info')}>新歓イベント</h3>
+            <h3 onClick={this.openMenu.bind(this, 'info')}>新歓情報</h3>
             {(()=>{
               if(this.state.currentMenu === 'info' || this.state.currentMenu === 'all'){
                 return(
                   <ul className="css-side-menu">
                     <li onClick={this.openContent.bind(this, 'schedule')}>
                       <p className="css-menu-title">スケジュール</p>
+                    </li>
+                    <li onClick={this.openContent.bind(this, 'faq')}>
+                      <p className="css-menu-title">よくあるご質問</p>
                     </li>
                   </ul>
                 );
@@ -112,7 +117,7 @@ class MainContent extends Component {
           <div className="css-main-content">
             <h2>スケジュール</h2>
             <div className="css-section">
-              <h3>お花見＠代々木公園</h3>
+              <h3>お花見</h3>
               <div className="css-description">
                 <p>メンバーとの交流を兼ねて、代々木公園で新歓お花見をします。まずは気軽にどんな雰囲気のメンバーがいるのか見に来てみてください。</p>
               </div>
@@ -128,6 +133,28 @@ class MainContent extends Component {
               <div className="css-description">
                 <p>現時点で関心のある学問分野や社会問題について聞きながら、大学生活4年間の勉強や活動の計画について先輩が相談に乗ります。その中でCloud.A会員に近いテーマを持つメンバーやプロジェクトがあれば紹介します。</p>
                 <p>学問や社会問題に詳しい先輩と話しながら4年間の計画を立てるだけでも非常に役立つので、Cloud.Aへの参加をまだ迷っている方でも気軽に参加して大丈夫です！</p>
+              </div>
+            </div>
+          </div>
+        );
+        break;
+      case 'faq':
+        return(
+          <div className="css-main-content">
+            <h2>よくあるご質問</h2>
+            <div className="css-section">
+              <h3>1. インカレですか？</h3>
+              <div className="css-description">
+                <p>はい、都内を中心に数多くの大学からメンバーが集まっています。普段はなかなか出会う機会が無い他大学の学生と交流できることも大きな魅力の1つです。</p>
+                <Link to="/members" className="css-link-btn">メンバー情報を見る</Link>
+              </div>
+              <h3>2. 理系でも参加できますか？</h3>
+              <div className="css-description">
+                <p>はい、もちろん理系学生も多く参加しています。理系の場合、学部内では自分の専攻以外に興味を持つ友人を見つけづらいので、より広く人文学や社会科学についても学びたいという理由でCloud.Aに参加するメンバーが多いようです。</p>
+              </div>
+              <h3>3. 入会費などはありますか？</h3>
+              <div className="css-description">
+                <p>入会費や年会費などは一切ありません。</p>
               </div>
             </div>
           </div>

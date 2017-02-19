@@ -27654,19 +27654,35 @@
 /*!***************************!*\
   !*** ./app/views/tool.js ***!
   \***************************/
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var Tool = {
 	  rand: function rand(num) {
 	    return Math.floor(Math.random() * num);
 	  },
+	  simpleFormat: function simpleFormat(text) {
+	    var regex = /(\n)/g;
+	    return text.split(regex).map(function (line) {
+	      if (line.match(regex)) {
+	        return _react2.default.createElement('br', { key: Tool.rand(1000000000) });
+	      } else {
+	        return line;
+	      }
+	    });
+	  },
 	  ajax: {
 	    get: function get(url) {
 	      var json = void 0;
 	      if (navigator.userAgent.toLowerCase().indexOf('safari') == -1) {
-	        fetch('/json/themes.json').then(function (res) {
+	        fetch(url).then(function (res) {
 	          return res.json();
 	        }).then(function (data) {
 	          json = data;
@@ -27683,8 +27699,6 @@
 	    }
 	  }
 	};
-	
-	var Ajax = {};
 	
 	module.exports = Tool;
 
@@ -28867,34 +28881,45 @@
 	  function Members() {
 	    _classCallCheck(this, Members);
 	
-	    return _possibleConstructorReturn(this, (Members.__proto__ || Object.getPrototypeOf(Members)).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, (Members.__proto__ || Object.getPrototypeOf(Members)).call(this));
+	
+	    _this.state = {
+	      members: []
+	    };
+	    return _this;
 	  }
 	
 	  _createClass(Members, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var json = Tool.ajax.get('/json/members.json');
+	      this.setState({
+	        members: json.members,
+	        universities: json.universities
+	      });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
+	
 	      return _react2.default.createElement(
 	        'div',
 	        null,
 	        _react2.default.createElement(Header, null),
 	        _react2.default.createElement(
 	          'section',
-	          { id: 'members', className: 'contentWrapper layout-1' },
+	          { id: 'theme', className: 'contentWrapper layout-2' },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'css-wrapper css-bg-vision-1' },
+	            { className: 'css-wrapper css-bg-members' },
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'css-content' },
 	              _react2.default.createElement(
 	                'h2',
 	                null,
-	                '\u30E1\u30F3\u30D0\u30FC\u7D39\u4ECB'
-	              ),
-	              _react2.default.createElement(
-	                'p',
-	                { className: 'css-title' },
-	                '\u30D3\u30B8\u30E7\u30F3\u3002\u30D3\u30B8\u30E7\u30F3\u3002\u30D3\u30B8\u30E7\u30F3\u3002'
+	                '\u904B\u55B6\u7D39\u4ECB'
 	              ),
 	              _react2.default.createElement(
 	                'div',
@@ -28902,26 +28927,28 @@
 	                _react2.default.createElement(
 	                  'p',
 	                  null,
-	                  '\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002'
+	                  'Cloud.A\u904B\u55B6\u30C1\u30FC\u30E0\u306E\u30E1\u30F3\u30D0\u30FC\u3092\u3054\u7D39\u4ECB\u3057\u307E\u3059\u3002'
 	                )
 	              )
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'css-wrapper css-bg-vision-2' },
+	            ),
+	            function () {
+	              if (_this2.state.members.length == 0) {
+	                return _react2.default.createElement(
+	                  'div',
+	                  { className: 'css-no-theme' },
+	                  'Now Loading...'
+	                );
+	              } else {
+	                return _react2.default.createElement(MemberList, { members: _this2.state.members });
+	              }
+	            }(),
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'css-content' },
 	              _react2.default.createElement(
 	                'h2',
 	                null,
-	                '\u30E1\u30F3\u30D0\u30FC\u7D39\u4ECB'
-	              ),
-	              _react2.default.createElement(
-	                'p',
-	                { className: 'css-title' },
-	                '\u30D3\u30B8\u30E7\u30F3\u3002\u30D3\u30B8\u30E7\u30F3\u3002\u30D3\u30B8\u30E7\u30F3\u3002'
+	                '\u5927\u5B66\u5225\u53C2\u52A0\u8005\u5B9F\u7E3E'
 	              ),
 	              _react2.default.createElement(
 	                'div',
@@ -28929,34 +28956,30 @@
 	                _react2.default.createElement(
 	                  'p',
 	                  null,
-	                  '\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002'
-	                )
-	              )
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'css-wrapper css-bg-vision-3' },
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'css-content' },
-	              _react2.default.createElement(
-	                'h2',
-	                null,
-	                '\u30E1\u30F3\u30D0\u30FC\u7D39\u4ECB'
-	              ),
-	              _react2.default.createElement(
-	                'p',
-	                { className: 'css-title' },
-	                '\u30D3\u30B8\u30E7\u30F3\u3002\u30D3\u30B8\u30E7\u30F3\u3002\u30D3\u30B8\u30E7\u30F3\u3002'
-	              ),
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'css-description' },
+	                  'Cloud.A\u306E\u52C9\u5F37\u4F1A\u53C2\u52A0\u8005\u306E\u5927\u5B66\u5225\u5B9F\u7E3E\u3067\u3059\u3002'
+	                ),
 	                _react2.default.createElement(
-	                  'p',
-	                  null,
-	                  '\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002\u8AAC\u660E\u6587\u3002'
+	                  'table',
+	                  { className: 'css-table' },
+	                  function () {
+	                    if (_this2.state.members.length == 0) {
+	                      return _react2.default.createElement(
+	                        'tbody',
+	                        null,
+	                        _react2.default.createElement(
+	                          'tr',
+	                          null,
+	                          _react2.default.createElement(
+	                            'td',
+	                            null,
+	                            'Now Loading...'
+	                          )
+	                        )
+	                      );
+	                    } else {
+	                      return _react2.default.createElement(UnivList, { universities: _this2.state.universities });
+	                    }
+	                  }()
 	                )
 	              )
 	            )
@@ -28967,6 +28990,108 @@
 	  }]);
 	
 	  return Members;
+	}(_react.Component);
+	
+	var MemberList = function (_Component2) {
+	  _inherits(MemberList, _Component2);
+	
+	  function MemberList() {
+	    _classCallCheck(this, MemberList);
+	
+	    return _possibleConstructorReturn(this, (MemberList.__proto__ || Object.getPrototypeOf(MemberList)).apply(this, arguments));
+	  }
+	
+	  _createClass(MemberList, [{
+	    key: 'render',
+	    value: function render() {
+	
+	      var membersNode = this.props.members.map(function (member) {
+	        var tagsNode = member.tags.map(function (tag) {
+	          return _react2.default.createElement(
+	            'p',
+	            { key: tag, className: 'css-tag' },
+	            tag
+	          );
+	        });
+	        var bgImageStyle = {
+	          backgroundPosition: 'center',
+	          backgroundSize: 'cover',
+	          backgroundImage: member.image ? 'url("/image/ws/' + member.image + '")' : 'url("/image/bg/workshop.png")'
+	        };
+	        return _react2.default.createElement(
+	          'div',
+	          { key: member.id, className: 'css-theme' },
+	          _react2.default.createElement('div', { className: 'css-image', style: bgImageStyle }),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'css-ws-content' },
+	            _react2.default.createElement(
+	              'p',
+	              { className: 'css-date' },
+	              member.position
+	            ),
+	            _react2.default.createElement(
+	              'p',
+	              { className: 'css-date' },
+	              member.univ
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'css-pj-description' },
+	              Tool.simpleFormat(member.introduction)
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'css-tags' },
+	              tagsNode
+	            )
+	          ),
+	          _react2.default.createElement('div', { className: 'clear' })
+	        );
+	      });
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'css-themes' },
+	        membersNode
+	      );
+	    }
+	  }]);
+	
+	  return MemberList;
+	}(_react.Component);
+	
+	var UnivList = function (_Component3) {
+	  _inherits(UnivList, _Component3);
+	
+	  function UnivList() {
+	    _classCallCheck(this, UnivList);
+	
+	    return _possibleConstructorReturn(this, (UnivList.__proto__ || Object.getPrototypeOf(UnivList)).apply(this, arguments));
+	  }
+	
+	  _createClass(UnivList, [{
+	    key: 'render',
+	    value: function render() {
+	      var UniversitiesNode = this.props.universities.map(function (univ) {
+	        return _react2.default.createElement(
+	          'tr',
+	          { key: univ.id },
+	          _react2.default.createElement(
+	            'td',
+	            null,
+	            univ.name
+	          )
+	        );
+	      });
+	      return _react2.default.createElement(
+	        'tbody',
+	        null,
+	        UniversitiesNode
+	      );
+	    }
+	  }]);
+	
+	  return UnivList;
 	}(_react.Component);
 	
 	module.exports = Members;
@@ -28985,6 +29110,8 @@
 	var _react = __webpack_require__(/*! react */ 1);
 	
 	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRouter = __webpack_require__(/*! react-router */ 179);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -29056,7 +29183,7 @@
 	            _react2.default.createElement(
 	              'h3',
 	              { onClick: this.openMenu.bind(this, 'info') },
-	              '\u65B0\u6B53\u30A4\u30D9\u30F3\u30C8'
+	              '\u65B0\u6B53\u60C5\u5831'
 	            ),
 	            function () {
 	              if (_this2.state.currentMenu === 'info' || _this2.state.currentMenu === 'all') {
@@ -29070,6 +29197,15 @@
 	                      'p',
 	                      { className: 'css-menu-title' },
 	                      '\u30B9\u30B1\u30B8\u30E5\u30FC\u30EB'
+	                    )
+	                  ),
+	                  _react2.default.createElement(
+	                    'li',
+	                    { onClick: _this2.openContent.bind(_this2, 'faq') },
+	                    _react2.default.createElement(
+	                      'p',
+	                      { className: 'css-menu-title' },
+	                      '\u3088\u304F\u3042\u308B\u3054\u8CEA\u554F'
 	                    )
 	                  )
 	                );
@@ -29221,7 +29357,7 @@
 	              _react2.default.createElement(
 	                'h3',
 	                null,
-	                '\u304A\u82B1\u898B\uFF20\u4EE3\u3005\u6728\u516C\u5712'
+	                '\u304A\u82B1\u898B'
 	              ),
 	              _react2.default.createElement(
 	                'div',
@@ -29271,6 +29407,68 @@
 	                  'p',
 	                  null,
 	                  '\u5B66\u554F\u3084\u793E\u4F1A\u554F\u984C\u306B\u8A73\u3057\u3044\u5148\u8F29\u3068\u8A71\u3057\u306A\u304C\u30894\u5E74\u9593\u306E\u8A08\u753B\u3092\u7ACB\u3066\u308B\u3060\u3051\u3067\u3082\u975E\u5E38\u306B\u5F79\u7ACB\u3064\u306E\u3067\u3001Cloud.A\u3078\u306E\u53C2\u52A0\u3092\u307E\u3060\u8FF7\u3063\u3066\u3044\u308B\u65B9\u3067\u3082\u6C17\u8EFD\u306B\u53C2\u52A0\u3057\u3066\u5927\u4E08\u592B\u3067\u3059\uFF01'
+	                )
+	              )
+	            )
+	          );
+	          break;
+	        case 'faq':
+	          return _react2.default.createElement(
+	            'div',
+	            { className: 'css-main-content' },
+	            _react2.default.createElement(
+	              'h2',
+	              null,
+	              '\u3088\u304F\u3042\u308B\u3054\u8CEA\u554F'
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'css-section' },
+	              _react2.default.createElement(
+	                'h3',
+	                null,
+	                '1. \u30A4\u30F3\u30AB\u30EC\u3067\u3059\u304B\uFF1F'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'css-description' },
+	                _react2.default.createElement(
+	                  'p',
+	                  null,
+	                  '\u306F\u3044\u3001\u90FD\u5185\u3092\u4E2D\u5FC3\u306B\u6570\u591A\u304F\u306E\u5927\u5B66\u304B\u3089\u30E1\u30F3\u30D0\u30FC\u304C\u96C6\u307E\u3063\u3066\u3044\u307E\u3059\u3002\u666E\u6BB5\u306F\u306A\u304B\u306A\u304B\u51FA\u4F1A\u3046\u6A5F\u4F1A\u304C\u7121\u3044\u4ED6\u5927\u5B66\u306E\u5B66\u751F\u3068\u4EA4\u6D41\u3067\u304D\u308B\u3053\u3068\u3082\u5927\u304D\u306A\u9B45\u529B\u306E1\u3064\u3067\u3059\u3002'
+	                ),
+	                _react2.default.createElement(
+	                  _reactRouter.Link,
+	                  { to: '/members', className: 'css-link-btn' },
+	                  '\u30E1\u30F3\u30D0\u30FC\u60C5\u5831\u3092\u898B\u308B'
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'h3',
+	                null,
+	                '2. \u7406\u7CFB\u3067\u3082\u53C2\u52A0\u3067\u304D\u307E\u3059\u304B\uFF1F'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'css-description' },
+	                _react2.default.createElement(
+	                  'p',
+	                  null,
+	                  '\u306F\u3044\u3001\u3082\u3061\u308D\u3093\u7406\u7CFB\u5B66\u751F\u3082\u591A\u304F\u53C2\u52A0\u3057\u3066\u3044\u307E\u3059\u3002\u7406\u7CFB\u306E\u5834\u5408\u3001\u5B66\u90E8\u5185\u3067\u306F\u81EA\u5206\u306E\u5C02\u653B\u4EE5\u5916\u306B\u8208\u5473\u3092\u6301\u3064\u53CB\u4EBA\u3092\u898B\u3064\u3051\u3065\u3089\u3044\u306E\u3067\u3001\u3088\u308A\u5E83\u304F\u4EBA\u6587\u5B66\u3084\u793E\u4F1A\u79D1\u5B66\u306B\u3064\u3044\u3066\u3082\u5B66\u3073\u305F\u3044\u3068\u3044\u3046\u7406\u7531\u3067Cloud.A\u306B\u53C2\u52A0\u3059\u308B\u30E1\u30F3\u30D0\u30FC\u304C\u591A\u3044\u3088\u3046\u3067\u3059\u3002'
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'h3',
+	                null,
+	                '3. \u5165\u4F1A\u8CBB\u306A\u3069\u306F\u3042\u308A\u307E\u3059\u304B\uFF1F'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'css-description' },
+	                _react2.default.createElement(
+	                  'p',
+	                  null,
+	                  '\u5165\u4F1A\u8CBB\u3084\u5E74\u4F1A\u8CBB\u306A\u3069\u306F\u4E00\u5207\u3042\u308A\u307E\u305B\u3093\u3002'
 	                )
 	              )
 	            )

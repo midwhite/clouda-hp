@@ -5,6 +5,9 @@
   .css-bg-projects {
     background-image: url('/image/bg/projects.jpg');
   }
+  .css-bg-members {
+    background-image: url('/image/bg/members.jpg');
+  }
   .css-wrapper {
     padding: 10px;
     background: {
@@ -24,6 +27,20 @@
       }
       .css-description {
         padding: 10px;
+        .css-table {
+          width: 100%;
+          margin: 10px 0px;
+          tr {
+            border: 1px solid #333;
+            background: #FFFFFF;
+            &:nth-child(even){
+              background: #E3F2FD;
+            }
+            td {
+              padding: 10px;
+            }
+          }
+        }
       }
     }
     .css-themes {
@@ -72,6 +89,21 @@
               background: #2196F3;
               color: #FFFFFF;
             }
+          }
+        }
+        .css-tags {
+          position: absolute;
+          right: 5px;
+          bottom: 5px;
+          .css-tag {
+            padding: 3px;
+            margin: 0px 5px;
+            border: 1px solid #689F38;
+            color: #689F38;
+            background: #FFF;
+            font-size: 14px;
+            box-shadow: 1px 1px 1px rgba(0,0,0,.5);
+            display: inline-block;
           }
         }
       }
