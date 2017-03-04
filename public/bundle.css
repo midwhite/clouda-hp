@@ -377,12 +377,34 @@
 .layout-4 .css-wrapper {
   min-height: 500px;
   padding: 10px 0px; }
-  .layout-4 .css-wrapper h2 {
+  .layout-4 .css-wrapper .css-header {
     padding: 9px;
     margin: 0px 10px 10px;
     border: 1px solid #FFFFFF;
-    background: rgba(255, 255, 255, 0.7);
-    font-size: 30px; }
+    background: rgba(255, 255, 255, 0.7); }
+    .layout-4 .css-wrapper .css-header h2 {
+      font-size: 30px; }
+  .layout-4 .css-wrapper .css-tags-box .css-tags {
+    margin-top: 10px; }
+    .layout-4 .css-wrapper .css-tags-box .css-tags .css-tag {
+      padding: 2px 7px;
+      margin: 2px 4px;
+      border: 1px solid #2962FF;
+      background: rgba(255, 255, 255, 0.4);
+      color: #2962FF;
+      font-size: 14px;
+      text-align: center;
+      display: inline-block;
+      transition: all 300ms 0s ease; }
+      .layout-4 .css-wrapper .css-tags-box .css-tags .css-tag:hover {
+        border: 1px solid #2196F3;
+        background: #2196F3;
+        color: #FFFFFF;
+        cursor: pointer; }
+    .layout-4 .css-wrapper .css-tags-box .css-tags .css-selected-tag {
+      border: 1px solid #1565C0;
+      background: #1565C0;
+      color: #FFFFFF; }
   .layout-4 .css-wrapper .css-contents .css-content-wrapper {
     width: 100%;
     float: left; }
@@ -396,8 +418,9 @@
       overflow: hidden;
       transition: all 300ms 0s ease; }
       .layout-4 .css-wrapper .css-contents .css-content-wrapper .css-content:hover {
-        background: rgba(255, 255, 255, 0.8);
-        border: 1px solid #616161;
+        background: rgba(68, 138, 255, 0.8);
+        color: #FFFFFF;
+        border: 1px solid #448AFF;
         cursor: pointer; }
 
 .layout-4 .css-modal-wrapper {

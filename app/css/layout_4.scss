@@ -9,12 +9,41 @@
   .css-wrapper {
     min-height: 500px;
     padding: 10px 0px;
-    h2 {
+    .css-header {
       padding: 9px;
       margin: 0px 10px 10px;
       border: 1px solid #FFFFFF;
       background: rgba(255,255,255,.7);
-      font-size: 30px;
+      h2 {
+        font-size: 30px;
+      }
+    }
+    .css-tags-box {
+      .css-tags {
+        margin-top: 10px;
+        .css-tag {
+          padding: 2px 7px;
+          margin: 2px 4px;
+          border: 1px solid #2962FF;
+          background: rgba(255,255,255,.4);
+          color: #2962FF;
+          font-size: 14px;
+          text-align: center;
+          display: inline-block;
+          transition: all 300ms 0s ease;
+          &:hover {
+            border: 1px solid #2196F3;
+            background: #2196F3;
+            color: #FFFFFF;
+            cursor: pointer;
+          }
+        }
+        .css-selected-tag {
+          border: 1px solid #1565C0;
+          background: #1565C0;
+          color: #FFFFFF;
+        }
+      }
     }
     .css-contents {
       .css-content-wrapper {
@@ -30,8 +59,9 @@
           overflow: hidden;
           transition: all 300ms 0s ease;
           &:hover {
-            background: rgba(255,255,255,.8);
-            border: 1px solid #616161;
+            background: rgba(68,138,255,.8);
+            color: #FFFFFF;
+            border: 1px solid #448AFF;
             cursor: pointer;
           }
         }

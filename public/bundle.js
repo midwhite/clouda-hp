@@ -22045,7 +22045,7 @@
 	var About = __webpack_require__(/*! ./views/about.js */ 238);
 	var Workshop = __webpack_require__(/*! ./views/workshop.js */ 239);
 	var Projects = __webpack_require__(/*! ./views/projects.js */ 240);
-	var Gallery = __webpack_require__(/*! ./views/gallery.js */ 247);
+	var Gallery = __webpack_require__(/*! ./views/gallery.js */ 241);
 	var Members = __webpack_require__(/*! ./views/members.js */ 242);
 	var Recruit = __webpack_require__(/*! ./views/recruit.js */ 243);
 	var Prepare = __webpack_require__(/*! ./views/in_preparation.js */ 244);
@@ -28714,7 +28714,206 @@
 	module.exports = Projects;
 
 /***/ },
-/* 241 */,
+/* 241 */
+/*!******************************!*\
+  !*** ./app/views/gallery.js ***!
+  \******************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Header = __webpack_require__(/*! ./header.js */ 235);
+	var Tool = __webpack_require__(/*! ./tool.js */ 236);
+	
+	var Gallery = function (_Component) {
+	  _inherits(Gallery, _Component);
+	
+	  function Gallery() {
+	    _classCallCheck(this, Gallery);
+	
+	    var _this = _possibleConstructorReturn(this, (Gallery.__proto__ || Object.getPrototypeOf(Gallery)).call(this));
+	
+	    _this.state = {
+	      docs: [],
+	      docId: null,
+	      tags: [],
+	      selectedTags: [],
+	      tagNames: {}
+	    };
+	    return _this;
+	  }
+	
+	  _createClass(Gallery, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var json = Tool.ajax.get('/json/docs.json');
+	      var docs = json.docs;
+	
+	      var tags = [];
+	      docs.forEach(function (doc, i) {
+	        doc.tags.forEach(function (tag, j) {
+	          tags.push(tag);
+	        });
+	      });
+	      tags = tags.filter(function (tag, i) {
+	        return tags.indexOf(tag) === i;
+	      });
+	
+	      this.setState({
+	        docs: docs,
+	        tags: tags,
+	        tagNames: json.tagNames
+	      });
+	    }
+	  }, {
+	    key: 'displayModal',
+	    value: function displayModal(id) {
+	      this.setState({
+	        docId: id
+	      });
+	    }
+	  }, {
+	    key: 'selectTag',
+	    value: function selectTag(tag) {
+	      var selectedTags = this.state.selectedTags;
+	      if (selectedTags.indexOf(tag) == -1) {
+	        // タグを選択する
+	        selectedTags.push(tag);
+	      } else {
+	        // タグを選択から除外する
+	        selectedTags.splice(selectedTags.indexOf(tag), 1);
+	      }
+	      this.setState({
+	        selectedTags: selectedTags
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+	
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(Header, null),
+	        _react2.default.createElement(
+	          'section',
+	          { id: 'gallery', className: 'contentWrapper layout-4' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'css-wrapper css-bg-shelf' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'css-header css-tags-box' },
+	              _react2.default.createElement(
+	                'h2',
+	                null,
+	                '\u8CC7\u6599\u96C6'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'css-tags' },
+	                function () {
+	                  return _this2.state.tags.map(function (tag) {
+	                    return _react2.default.createElement(
+	                      'p',
+	                      { key: tag, className: _this2.state.selectedTags.indexOf(tag) > -1 ? "css-tag css-selected-tag css-tag-" + tag : "css-tag css-tag-" + tag, onClick: _this2.selectTag.bind(_this2, tag) },
+	                      _this2.state.tagNames[tag]
+	                    );
+	                  });
+	                }()
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'css-contents' },
+	              function () {
+	                if (_this2.state.docs.length == 0) {
+	                  return _react2.default.createElement(
+	                    'div',
+	                    null,
+	                    'Now Loading...'
+	                  );
+	                } else {
+	                  var _ret = function () {
+	                    var selectedTags = _this2.state.selectedTags;
+	                    return {
+	                      v: _this2.state.docs.filter(function (doc, i) {
+	                        // カテゴリの絞り込み
+	                        return selectedTags.length == 0 || selectedTags.every(function (tag) {
+	                          return doc.tags.indexOf(tag) > -1;
+	                        });
+	                      }).map(function (doc) {
+	                        return _react2.default.createElement(
+	                          'div',
+	                          { key: doc.id, className: 'css-content-wrapper' },
+	                          _react2.default.createElement(
+	                            'div',
+	                            { className: 'css-content', onClick: _this2.displayModal.bind(_this2, doc.id) },
+	                            _react2.default.createElement(
+	                              'p',
+	                              null,
+	                              '\u7B2C',
+	                              doc.num,
+	                              '\u56DE'
+	                            ),
+	                            _react2.default.createElement(
+	                              'p',
+	                              null,
+	                              doc.title
+	                            )
+	                          )
+	                        );
+	                      })
+	                    };
+	                  }();
+	
+	                  if ((typeof _ret === 'undefined' ? 'undefined' : _typeof(_ret)) === "object") return _ret.v;
+	                }
+	              }()
+	            ),
+	            _react2.default.createElement('div', { className: 'clear' })
+	          ),
+	          function () {
+	            if (_this2.state.docId) {
+	              return _react2.default.createElement(
+	                'div',
+	                { className: 'css-modal-wrapper', onClick: _this2.displayModal.bind(_this2, null) },
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'css-modal', style: { height: window.screen.width > 600 ? 400 : window.screen.width * 3 / 4 } },
+	                  _react2.default.createElement('iframe', { src: "https://docs.google.com/presentation/d/" + _this2.state.docId + "/embed?start=false&loop=true", frameBorder: '0', width: window.screen.width > 600 ? "600px" : "100%", height: window.screen.width > 600 ? "400px" : window.screen.width * 3 / 4 + "px", allowFullScreen: 'true' })
+	                )
+	              );
+	            }
+	          }()
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return Gallery;
+	}(_react.Component);
+	
+	module.exports = Gallery;
+
+/***/ },
 /* 242 */
 /*!******************************!*\
   !*** ./app/views/members.js ***!
@@ -30267,150 +30466,6 @@
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 247 */
-/*!******************************!*\
-  !*** ./app/views/gallery.js ***!
-  \******************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var Header = __webpack_require__(/*! ./header.js */ 235);
-	var Tool = __webpack_require__(/*! ./tool.js */ 236);
-	
-	var Gallery = function (_Component) {
-	  _inherits(Gallery, _Component);
-	
-	  function Gallery() {
-	    _classCallCheck(this, Gallery);
-	
-	    var _this = _possibleConstructorReturn(this, (Gallery.__proto__ || Object.getPrototypeOf(Gallery)).call(this));
-	
-	    _this.state = {
-	      docs: [],
-	      docId: null
-	    };
-	    return _this;
-	  }
-	
-	  _createClass(Gallery, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      this.setState({
-	        docs: Tool.ajax.get('/json/docs.json')
-	      });
-	    }
-	  }, {
-	    key: 'displayModal',
-	    value: function displayModal(id) {
-	      this.setState({
-	        docId: id
-	      });
-	    }
-	  }, {
-	    key: 'onClickModalWrapper',
-	    value: function onClickModalWrapper() {
-	      this.setState({
-	        docId: null
-	      });
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _this2 = this;
-	
-	      var docsNodes = this.state.docs.map(function (doc) {
-	        return _react2.default.createElement(
-	          'div',
-	          { key: doc.id, className: 'css-content-wrapper' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'css-content', onClick: _this2.displayModal.bind(_this2, doc.id) },
-	            _react2.default.createElement(
-	              'p',
-	              null,
-	              '\u7B2C',
-	              doc.num,
-	              '\u56DE'
-	            ),
-	            _react2.default.createElement(
-	              'p',
-	              null,
-	              doc.title
-	            )
-	          )
-	        );
-	      });
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(Header, null),
-	        _react2.default.createElement(
-	          'section',
-	          { id: 'gallery', className: 'contentWrapper layout-4' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'css-wrapper css-bg-shelf' },
-	            _react2.default.createElement(
-	              'h2',
-	              null,
-	              '\u8CC7\u6599\u96C6'
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'css-contents' },
-	              function () {
-	                if (_this2.state.docs.length == 0) {
-	                  return _react2.default.createElement(
-	                    'div',
-	                    null,
-	                    'Now Loading...'
-	                  );
-	                } else {
-	                  return docsNodes;
-	                }
-	              }()
-	            ),
-	            _react2.default.createElement('div', { className: 'clear' })
-	          ),
-	          function () {
-	            if (_this2.state.docId) {
-	              return _react2.default.createElement(
-	                'div',
-	                { className: 'css-modal-wrapper', onClick: _this2.onClickModalWrapper.bind(_this2) },
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'css-modal', style: { height: window.screen.width > 600 ? 400 : window.screen.width * 3 / 4 } },
-	                  _react2.default.createElement('iframe', { src: "https://docs.google.com/presentation/d/" + _this2.state.docId + "/embed?start=false&loop=true", frameBorder: '0', width: window.screen.width > 600 ? "600px" : "100%", height: window.screen.width > 600 ? "400px" : window.screen.width * 3 / 4 + "px", allowFullScreen: 'true' })
-	                )
-	              );
-	            }
-	          }()
-	        )
-	      );
-	    }
-	  }]);
-	
-	  return Gallery;
-	}(_react.Component);
-	
-	module.exports = Gallery;
 
 /***/ }
 /******/ ]);

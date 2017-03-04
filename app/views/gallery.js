@@ -7,12 +7,30 @@ class Gallery extends Component {
     super();
     this.state = {
       docs: [],
-      docId: null
+      docId: null,
+      tags: [],
+      selectedTags: [],
+      tagNames: {}
     }
   }
   componentDidMount(){
+    const json = Tool.ajax.get('/json/docs.json');
+    const docs = json.docs;
+
+    let tags = [];
+    docs.forEach((doc, i)=>{
+      doc.tags.forEach((tag, j)=>{
+        tags.push(tag);
+      });
+    });
+    tags = tags.filter((tag, i)=>{
+      return tags.indexOf(tag) === i
+    });
+
     this.setState({
-      docs: Tool.ajax.get('/json/docs.json')
+      docs: docs,
+      tags: tags,
+      tagNames: json.tagNames
     });
   }
   displayModal(id){
@@ -20,36 +38,54 @@ class Gallery extends Component {
       docId: id
     });
   }
-  onClickModalWrapper(){
+  selectTag(tag){
+    const selectedTags = this.state.selectedTags;
+    if(selectedTags.indexOf(tag) == -1){
+      // タグを選択する
+      selectedTags.push(tag);
+    } else {
+      // タグを選択から除外する
+      selectedTags.splice(selectedTags.indexOf(tag),1);
+    }
     this.setState({
-      docId: null
+      selectedTags: selectedTags
     });
   }
   render(){
-    const docsNodes = this.state.docs.map((doc)=>{
-      return(
-        <div key={doc.id} className="css-content-wrapper">
-          <div className="css-content" onClick={this.displayModal.bind(this, doc.id)}>
-            <p>第{doc.num}回</p>
-            <p>{doc.title}</p>
-          </div>
-        </div>
-      );
-    });
     return(
       <div>
         <Header />
         <section id="gallery" className="contentWrapper layout-4">
           <div className="css-wrapper css-bg-shelf">
-            <h2>資料集</h2>
+            <div className="css-header css-tags-box">
+              <h2>資料集</h2>
+              <div className="css-tags">
+              {(()=>{
+                return this.state.tags.map((tag)=>{
+                  return <p key={tag} className={(this.state.selectedTags.indexOf(tag)>-1) ? "css-tag css-selected-tag css-tag-"+tag : "css-tag css-tag-"+tag} onClick={this.selectTag.bind(this, tag)}>{this.state.tagNames[tag]}</p>;
+                });
+              })()}
+              </div>
+            </div>
             <div className="css-contents">
               {(()=>{
                 if(this.state.docs.length == 0){
-                  return(
-                    <div>Now Loading...</div>
-                  );
+                  return <div>Now Loading...</div>;
                 } else {
-                  return docsNodes;
+                  const selectedTags = this.state.selectedTags;
+                  return this.state.docs.filter((doc, i)=>{
+                    // カテゴリの絞り込み
+                    return selectedTags.length == 0 || selectedTags.every((tag)=>{ return doc.tags.indexOf(tag)>-1});
+                  }).map((doc)=>{
+                    return(
+                      <div key={doc.id} className="css-content-wrapper">
+                        <div className="css-content" onClick={this.displayModal.bind(this, doc.id)}>
+                          <p>第{doc.num}回</p>
+                          <p>{doc.title}</p>
+                        </div>
+                      </div>
+                    );
+                  });
                 }
               })()}
             </div>
@@ -58,7 +94,7 @@ class Gallery extends Component {
           {(()=>{
             if(this.state.docId){
               return(
-                <div className="css-modal-wrapper" onClick={this.onClickModalWrapper.bind(this)}>
+                <div className="css-modal-wrapper" onClick={this.displayModal.bind(this, null)}>
                   <div className="css-modal" style={{height: (window.screen.width > 600) ? 400 : (window.screen.width * 3 / 4)}}>
                     <iframe src={"https://docs.google.com/presentation/d/"+this.state.docId+"/embed?start=false&loop=true"} frameBorder="0" width={(window.screen.width > 600) ? "600px" : "100%"} height={(window.screen.width > 600) ? "400px" : (window.screen.width * 3 / 4)+"px"} allowFullScreen="true"></iframe>
                   </div>
