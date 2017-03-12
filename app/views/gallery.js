@@ -38,7 +38,8 @@ class Gallery extends Component {
       docId: id
     });
   }
-  selectTag(tag){
+  selectTag(tag, e){
+    e.stopPropagation();
     const selectedTags = this.state.selectedTags;
     if(selectedTags.indexOf(tag) == -1){
       // タグを選択する
@@ -79,9 +80,16 @@ class Gallery extends Component {
                   }).map((doc)=>{
                     return(
                       <div key={doc.id} className="css-content-wrapper">
-                        <div className="css-content" onClick={this.displayModal.bind(this, doc.id)}>
+                        <div className="css-content css-tags-box" onClick={this.displayModal.bind(this, doc.id)}>
                           <p>第{doc.num}回</p>
                           <p>{doc.title}</p>
+                          <div className="css-tags">
+                          {(()=>{
+                            return doc.tags.map((tag)=>{
+                              return <div key={Tool.rand(10000)} className={(this.state.selectedTags.indexOf(tag)>-1) ? "css-tag css-selected-tag css-tag-"+tag : "css-tag css-tag-"+tag} onClick={this.selectTag.bind(this, tag)}>{this.state.tagNames[tag]}</div>
+                            });
+                          })()}
+                          </div>
                         </div>
                       </div>
                     );

@@ -18,6 +18,7 @@ export default class Application extends Component {
       <section id="application">
         <Router history={browserHistory}>
           <Route path="/"              component={Home} />
+          <Route path="index.html"     component={Home} />
           <Route path="about"          component={About} />
           <Route path="vision"         component={Vision} />
           <Route path="about/workshop" component={Workshop} />

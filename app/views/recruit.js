@@ -117,22 +117,24 @@ class MainContent extends Component {
           <div className="css-main-content">
             <h2>スケジュール</h2>
             <div className="css-section">
-              <h3>お花見</h3>
+              <h3>お花見（4/2）</h3>
               <div className="css-description">
                 <p>メンバーとの交流を兼ねて、代々木公園で新歓お花見をします。まずは気軽にどんな雰囲気のメンバーがいるのか見に来てみてください。</p>
+                <p> >> <a href="https://www.facebook.com/events/1656012578027733/" target="_blank">イベントページ</a></p>
               </div>
             </div>
             <div className="css-section">
-              <h3>体験勉強会</h3>
+              <h3>体験勉強会（日程調整中）</h3>
               <div className="css-description">
                 <p>4月に新入生が体験参加できる勉強会を開催します。</p>
+                <p>事前知識なしで気軽に学問を楽しめるコンテンツを用意しますので、お楽しみに！</p>
               </div>
             </div>
             <div className="css-section">
-              <h3>学問相談会</h3>
+              <h3>学問相談会（日程調整中）</h3>
               <div className="css-description">
                 <p>現時点で関心のある学問分野や社会問題について聞きながら、大学生活4年間の勉強や活動の計画について先輩が相談に乗ります。その中でCloud.A会員に近いテーマを持つメンバーやプロジェクトがあれば紹介します。</p>
-                <p>学問や社会問題に詳しい先輩と話しながら4年間の計画を立てるだけでも非常に役立つので、Cloud.Aへの参加をまだ迷っている方でも気軽に参加して大丈夫です！</p>
+                <p>学問や社会問題に詳しい先輩と話しながら4年間の計画を立てるだけでも非常に役立つので、Cloud.Aへの参加をまだ迷っている方でも気軽にお越しください！</p>
               </div>
             </div>
           </div>
