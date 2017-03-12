@@ -13,6 +13,30 @@
   .firstview_2 {
     background-image: url('/image/firstview_2m.png');
   }
+  h2 {
+    background: #2196F3;
+    color: #FFFFFF;
+    padding: 5px;
+    text-align: center;
+  }
+  .css-news-container {
+    max-width: 600px;
+    margin: 0px auto;
+    .css-news {
+      padding: 5px;
+      margin: 10px;
+      h3 {
+        color: #666666;
+        margin-bottom: 5px;
+        font-size: 18px;
+        font-weight: bold;
+        text-decoration: underline;
+      }
+    }
+    .css-news + .css-news {
+      border-top: 1px solid #AAA;
+    }
+  }
 }
 
 @media screen and (min-width: 501px){
@@ -42,5 +66,17 @@
     .firstview {
       height: 800px;
     }
+  }
+}
+
+footer {
+  padding: 10px;
+  .fb-like {
+    display: block;
+    margin-bottom: 10px;
+  }
+  .copyright {
+    font-size: 12px;
+    text-align: right;
   }
 }
