@@ -44,6 +44,9 @@ class Recruit extends Component {
                     <li onClick={this.openContent.bind(this, 'schedule')}>
                       <p className="css-menu-title">スケジュール</p>
                     </li>
+                    <li>
+                      <p className="css-menu-title"><a href="https://goo.gl/forms/rAjSSPh4LlEg4kX53" target="_blank">応募フォーム</a></p>
+                    </li>
                     <li onClick={this.openContent.bind(this, 'faq')}>
                       <p className="css-menu-title">よくあるご質問</p>
                     </li>
@@ -136,6 +139,9 @@ class MainContent extends Component {
                 <p>現時点で関心のある学問分野や社会問題について聞きながら、大学生活4年間の勉強や活動の計画について先輩が相談に乗ります。その中でCloud.A会員に近いテーマを持つメンバーやプロジェクトがあれば紹介します。</p>
                 <p>学問や社会問題に詳しい先輩と話しながら4年間の計画を立てるだけでも非常に役立つので、Cloud.Aへの参加をまだ迷っている方でも気軽にお越しください！</p>
               </div>
+            </div>
+            <div className="css-apply">
+              <iframe src="https://goo.gl/forms/zkULg5PvH8zXWpxj2" className="css-apply-iframe" frameBorder="0"></iframe>
             </div>
           </div>
         );

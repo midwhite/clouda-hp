@@ -30,6 +30,13 @@
           color: #FFFFFF;
           cursor: pointer;
         }
+        a {
+          color: #616161;
+          display: block;
+          &:hover {
+            color: #FFFFFF;
+          }
+        }
       }
     }
   }
@@ -80,6 +87,14 @@
           }
         }
       }
+    }
+  }
+  .css-apply {
+    max-width: 680px;
+    margin: 0px auto;
+    .css-apply-iframe {
+      width: 100%;
+      min-height: 600px;
     }
   }
 }
